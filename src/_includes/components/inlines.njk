@@ -1,0 +1,53 @@
+  <!-- back button behavior -->
+  <script>
+    {% include "../../js-inline/mins/backbutton-min.js" %}
+  </script>
+  <!-- menu button behavior -->
+  <script>
+    {% include "../../js-inline/mins/menubutton-min.js" %}
+  </script>
+
+  <!-- Localforage indexed DB -->
+  <script src="{{ '/js/localforage.min.js' | url }}"></script>
+  <!-- localforage config -->
+  <script>
+    {% include "../../js-inline/mins/localForage-config-min.js" %}
+  </script>
+  
+  {# <script defer src="{{ '/js/atomic.min.js' | url }}"></script> #}
+
+  {% if page.fileSlug == 'createplayer' %}
+  <!-- createplayer behavior-->
+  <script>
+    {% include "../../js-inline/mins/createplayer-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'createcourse' %}
+  <!-- createcourse behavior-->
+  <script>
+    {% include "../../js-inline/mins/createcourse-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'adjustpars' %}
+  <!-- adjustpars behavior-->
+  <script>
+    {% include "../../js-inline/mins/adjustpars-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'roundsetup' %}
+  <!-- roundsetup behavior-->
+  <script>
+    {% include "../../js-inline/mins/roundsetup-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'roundscoring' %}
+  <!-- roundsetup behavior-->
+  <script>
+    {% include "../../js-inline/mins/roundscoring-min.js" %}
+  </script>
+  {% endif %}
+  

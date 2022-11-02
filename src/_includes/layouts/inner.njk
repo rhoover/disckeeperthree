@@ -1,0 +1,34 @@
+
+  {% include 'components/head-element.njk' %}
+  <body>
+    {% include "components/header.njk" %}
+    {% include "components/nav.njk" %}
+    <main class="{{ page.fileSlug or 'home' }}" >
+
+      {% if page.fileSlug === 'createplayer' %}
+        <h5 class="createplayer-header">Create A Player</h5>
+      {% endif%}
+      
+      {% if page.fileSlug === 'createcourse' %}
+        <h5 class="createcourse-header">Create A Course</h5>
+      {% endif%}
+      
+      {% if page.fileSlug === 'adjustpars' %}
+        <h5 class="adjustpars-header">Set Pars</h5>
+      {% endif%}
+      
+      {% if page.fileSlug === 'roundsetup' %}
+        <h5 class="setup-header">Round SetUp</h5>
+      {% endif%}
+      
+      {% if page.fileSlug === 'roundscoring' %}
+        <p class="roundscoring-header"></p>
+      {% endif%}
+      
+
+    {{ content | safe }}
+
+    </main>
+    {% include "components/inlines.njk" %}
+  </body>
+</html>

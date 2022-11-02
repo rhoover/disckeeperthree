@@ -1,0 +1,15 @@
+main {
+  position: relative;
+  top: 7rem;
+  min-height: calc(100vh - 7rem);
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(auto, 70rem) minmax(1rem, 1fr);
+  grid-template-rows: max-content;
+  background-color: setcolor(white, light25);
+  & > * {
+    grid-column: 2 / 3;
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: minmax(9rem, 1fr) minmax(auto, 70rem) minmax(9rem, 1fr);
+  }
+}

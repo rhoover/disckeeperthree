@@ -1,0 +1,164 @@
+.roundsetup {
+  grid-template-rows: repeat(6, max-content);
+  row-gap: $h5-size;
+}
+.setup {
+  &-header {
+    @extend %inner-header;
+  }
+  &-button {
+    @extend %form-input-button;
+    font-size: $h6-size;
+    line-height: $h1-size;
+    @extend %box-shadow;
+    &-goscore {
+      @extend %form-input-button;
+      font-size: $p-size;
+      @extend %box-shadow;
+    }
+  }
+  &-modal {
+    &-noprimary {
+      @extend %modal;
+      @extend %modal-nodata;
+      &-header {
+        @extend %modal-nodata-header;
+      }
+      &-open {
+        @extend %modal-open;
+      }
+    }
+    &-nocourse {
+      @extend %modal;
+      @extend %modal-nodata;
+      height: 45vh;
+      &-header {
+        @extend %modal-nodata-header;
+      }
+      &-open {
+        @extend %modal-open;
+      }
+    }
+    &-link {
+      font-size: $h4-size;
+      line-height: calc($h4-size * $scale);
+      text-align: center;
+      color: setcolor(blue, base)
+    }
+    &-players {
+      @extend %modal;
+      grid-template-rows: 12% 15% 1fr 12%;
+      &-open {
+        @extend %modal-open;
+      }
+      &-header {
+        @extend %modal-header;
+      }
+      &-explain {
+        text-align: center;
+        padding: $p-size;
+      }
+      &-list {
+        @extend %modal-list;
+      }
+      &-item {
+        @extend %modal-list-item;
+        &-checkmark {
+          @extend %modal-list-item-checkmark;
+          &-good {
+            @extend %modal-list-item-checkmark-good;
+          }
+        }
+      }
+      &-footer {
+        @extend %modal-footer;
+        &-close {
+          &-icon {
+            @extend %modal-footer-svg;
+            stroke: setcolor(red, dark15);
+            grid-column: 1 / 2;
+          }
+          &-text {
+            @extend %modal-footer-text;
+            grid-column: 2 / 3;
+            justify-self: start;
+          }
+        }
+        &-save {
+          &-icon {
+            @extend %modal-footer-svg;
+            grid-column: 4 / 5;
+            border: 1px solid setcolor(green, base);
+            stroke: setcolor(green, base);
+          }
+          &-text {
+            @extend %modal-footer-text;
+            grid-column: 3 / 4;
+            color: setcolor(green, base);
+          }
+        }
+      }
+    }
+    &-courses {
+      @extend %modal;
+      &-open {
+        @extend %modal-open;
+      }
+      &-header {
+        @extend %modal-header;
+      }
+      &-list {
+        @extend %modal-list;
+        padding-top: $h4-size;
+      }
+      &-item {
+        @extend %modal-list-item;
+        &-checkmark {
+          @extend %modal-list-item-checkmark;
+          &-good {
+            @extend %modal-list-item-checkmark-good;
+          }
+        }
+      }
+      &-footer {
+        @extend %modal-footer;
+        &-close {
+          &-icon {
+            @extend %modal-footer-svg;
+            stroke: setcolor(red, dark15);
+            grid-column: 1 / 2;
+          }
+          &-text {
+            @extend %modal-footer-text;
+            grid-column: 2 / 3;
+            justify-self: start;
+          }
+        }
+        &-save {
+          &-icon {
+            @extend %modal-footer-svg;
+            grid-column: 4 / 5;
+            border: 1px solid setcolor(green, base);
+            stroke: setcolor(green, base);
+          }
+          &-text {
+            @extend %modal-footer-text;
+            color: setcolor(green, base);
+            grid-column: 3 / 4;
+          }
+        }
+      }
+    }
+  }
+}
+
+.selections {
+  &-course {
+    text-align: center;
+    font-size: $h4-size;
+  }
+  &-players {
+    text-align: center;
+    font-size: $p-size;
+  }
+}

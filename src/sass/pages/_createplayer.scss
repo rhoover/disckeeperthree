@@ -1,0 +1,27 @@
+.createplayer {
+  grid-template-rows: repeat(3, max-content);
+  &-header {
+    @extend %inner-header;
+  }
+  &-form {
+    @extend %form;
+    &-input {
+      &-text {
+        @extend %form-input-text;
+      }
+      &-label {
+        @extend %form-input-label;
+      }
+    }
+    &-submit {
+      @extend %form-input-button;
+      @extend %box-shadow;
+    }
+  }
+  &-success {
+    @extend %create-success;
+    &-good {
+      @extend %create-success-good;
+    }
+  }
+}

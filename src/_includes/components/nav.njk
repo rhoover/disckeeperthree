@@ -1,0 +1,8 @@
+<nav class="nav">
+  {% for item in nav %}
+  <div class= "nav-item">
+    {% include ["nav-svg/", item.slug, ".svg"] | join %}
+    <a href="{{ item.url | safe }}" class="nav-item-link">{{ item.label }}</a>
+  </div>
+  {% endfor %}
+</nav>

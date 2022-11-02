@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Score A Round",
+    "slug": "scoring",
+    "url": "/roundsetup.html"
+  },
+  {
+    "label": "Create A Course",
+    "slug": "createcourse",
+    "url": "/createcourse.html"
+  },
+  {
+    "label": "Create A Player",
+    "slug": "createplayer",
+    "url": "/createplayer.html"
+  },
+  {
+    "label": "Round History",
+    "slug": "roundhistory",
+    "url": "/roundhistory.html"
+  }
+]

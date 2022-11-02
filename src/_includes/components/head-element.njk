@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>{{title}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    {# <link rel="manifest" href="/manifest.webmanifest"> #}
+    {% set critical %}
+      {% include "../../css/critical/critical.css" %}
+    {% endset %}
+    <!-- critical styles -->
+    <style>
+      {{ critical | safe }}
+    </style>
+    <!-- all other styles -->
+    {% cssLink %}  
+  </head>

@@ -1,0 +1,26 @@
+.home {
+  grid-template-rows: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: $p-size;
+  &-links {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border-radius: 0.5rem;
+    border: 2px solid setcolor(blue, dark25);
+    text-decoration: none;
+    color: setcolor(white, light55);
+    @extend %box-shadow;
+    & p {
+      font-weight: 700;
+      font-size: $h5-size;
+      line-height: calc($h5-size * $scale);
+      text-shadow: -1px -1px 0 setcolor(black, base),
+        1px -1px 0 setcolor(black, base),
+        -1px 1px 0 setcolor(black, base),
+        1px 1px 0 setcolor(black, base),
+        4px 4px 10px rgba(setcolor(white, base), 0.75);
+    }
+  }
+}

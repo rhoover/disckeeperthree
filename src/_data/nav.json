@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "slug": "home",
+    "url": "/"
+  },
+  {
+    "label": "List of Courses",
+    "slug": "courses",
+    "url": "/courses.html"
+  },
+  {
+    "label": "List of Players",
+    "slug": "players",
+    "url": "/players.html"
+  },
+  {
+    "label": "See Your Statistics",
+    "slug": "statistics",
+    "url": "/statistics.html"
+  }
+]

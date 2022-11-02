@@ -1,0 +1,10 @@
+---
+layout: layouts/home.njk
+title: Disckeeper
+---
+
+{% for link in homelinks %}
+    <a href="{{ link.url | safe}}" class="home-links home-links-{{ link.slug }}">
+      <p>{{ link.label }}</p>
+    </a>
+{% endfor %}

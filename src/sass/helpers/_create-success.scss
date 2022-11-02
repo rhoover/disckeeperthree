@@ -1,0 +1,10 @@
+%create-success {
+  display: none;
+  &-good {
+    display: block;
+    padding-top: $p-size;
+    text-align: center;
+    color: setcolor(green, base);
+    font-size: $h4-size;
+  }
+}
