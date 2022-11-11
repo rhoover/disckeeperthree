@@ -2,12 +2,13 @@
   <script>
     {% include "../../js-inline/mins/backbutton-min.js" %}
   </script>
+  
   <!-- menu button behavior -->
   <script>
     {% include "../../js-inline/mins/menubutton-min.js" %}
   </script>
 
-  <!-- Localforage indexed DB -->
+  <!-- Localforage -->
   <script src="{{ '/js/localforage.min.js' | url }}"></script>
   <!-- localforage config -->
   <script>
@@ -16,38 +17,45 @@
   
   {# <script defer src="{{ '/js/atomic.min.js' | url }}"></script> #}
 
-  {% if page.fileSlug == 'createplayer' %}
+  {% if page.fileSlug == 'create-player' %}
   <!-- createplayer behavior-->
   <script>
     {% include "../../js-inline/mins/createplayer-min.js" %}
   </script>
   {% endif %}
 
-  {% if page.fileSlug == 'createcourse' %}
+  {% if page.fileSlug == 'create-course' %}
   <!-- createcourse behavior-->
   <script>
     {% include "../../js-inline/mins/createcourse-min.js" %}
   </script>
   {% endif %}
 
-  {% if page.fileSlug == 'adjustpars' %}
+  {% if page.fileSlug == 'adjust-pars' %}
   <!-- adjustpars behavior-->
   <script>
     {% include "../../js-inline/mins/adjustpars-min.js" %}
   </script>
   {% endif %}
 
-  {% if page.fileSlug == 'roundsetup' %}
+  {% if page.fileSlug == 'round-setup' %}
   <!-- roundsetup behavior-->
   <script>
     {% include "../../js-inline/mins/roundsetup-min.js" %}
   </script>
   {% endif %}
 
-  {% if page.fileSlug == 'roundscoring' %}
-  <!-- roundsetup behavior-->
+  {% if page.fileSlug == 'round-scoring' %}
+  <!-- roundscoring behavior-->
   <script>
     {% include "../../js-inline/mins/roundscoring-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'round-history' %}
+  <!-- roundhistory behavior-->
+  <script>
+    {% include "../../js-inline/mins/roundhistory-min.js" %}
   </script>
   {% endif %}
   

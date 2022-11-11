@@ -292,6 +292,10 @@
 
     storeage(incomingSavedRoundData) {
       localforage.setItem('savedRounds', incomingSavedRoundData);
+
+      // remove chosen stuff for this round
+      localforage.removeItem('chosenCourse');
+      localforage.removeItem('chosenPlayers');
       
       // off to home page
       setTimeout(() => {
