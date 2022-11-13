@@ -29,7 +29,8 @@
     &-player {
       display: grid;
       @extend %modal-list-item;
-      grid-template-columns: repeat(3, max-content);
+      // grid-template-columns: repeat(3, max-content);
+      grid-template-columns: max-content max-content 1fr;
       column-gap: $p-size;
       padding-right: $p-size;
       &-name {
@@ -41,6 +42,7 @@
       }
       &-throws {
         grid-column: 3 / 4;
+        align-self: flex-end;
       }
     }
     &-footer {
