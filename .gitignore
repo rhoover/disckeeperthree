@@ -2,6 +2,7 @@
 /node_modules
 /dist
 /src/js-inline/mins
+/src/css/dk.css
 
 # local env files
 .env.local
