@@ -12,7 +12,7 @@
       getChosenCourse()
         .then(data => {
           //send down course data
-          roundscoring.buildHeader(data[0]);
+          // roundscoring.buildHeader(data[0]);
           roundscoring.seedMeta(data[0]);
 
           // send down player data
@@ -31,9 +31,9 @@
 
     },
 
-    buildHeader(incomingCourse) {
-      document.querySelector('.roundscoring-header').innerHTML = incomingCourse.name;
-    },
+    // buildHeader(incomingCourse) {
+    //   document.querySelector('.roundscoring-header').innerHTML = incomingCourse.name;
+    // },
 
     seedMeta(incomingCourse) {
       document.querySelector('[rh-holeNumber]').innerHTML = incomingCourse.holes[0].holeNumber;
@@ -131,6 +131,21 @@
 
           // write new score to displayed scores
           playerScoreCurrent[activePlayerIndex].innerHTML = activePlayer.holes[roundIndex].overUnderRound;
+
+          // color co-ordinate displayed overall scores
+          // over par:
+          if (activePlayer.holes[roundIndex].overUnderRound > 0) {
+            playerScoreCurrent[activePlayerIndex].classList.add('roundscoring-players-score-over');
+            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-under');  
+          // par: 
+          } else if (activePlayer.holes[roundIndex].overUnderRound == 0) {
+            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-over');
+            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-under');
+            // under par:  
+          } else {
+            playerScoreCurrent[activePlayerIndex].classList.add('roundscoring-players-score-under');
+            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-over');
+          };
 
           //seed next hole for active player
           nextHoleIndex = roundIndex + 1;

@@ -155,10 +155,12 @@
 .selections {
   &-course {
     text-align: center;
+    margin-top: $h5-size;
     font-size: $h4-size;
   }
   &-players {
     text-align: center;
-    font-size: $p-size;
+    margin-top: $h5-size;
+    font-size: $h5-size;
   }
 }

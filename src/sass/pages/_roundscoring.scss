@@ -145,7 +145,6 @@
     display: grid;
     grid-template-columns: 70% 25%;
     grid-template-rows: 1fr 1fr;
-    row-gap: $p-size;
     align-items: center;
     &-name {
       grid-column: 1 / 2;
@@ -159,6 +158,7 @@
         grid-column: 2 / 3;
         justify-self: right;
         text-align: center;
+        width: 90%;
         border: 1px solid setcolor(green, dark25);
         border-radius: 0.25rem;
         padding: 0.5rem 0px;
@@ -173,7 +173,8 @@
     }
   }
   &-scores {
-    font-size: $h5-size;
+    align-self: center;
+    font-size: $h4-size;
     font-weight: 700;
   }
   &-players {
@@ -184,6 +185,7 @@
       display: grid;
       grid-template-columns: 75% 1fr;
       row-gap: $h6-size;
+      align-items: center;
       padding: $p-size;
       border-radius: 0.25rem;
       border: 1px solid setcolor(green, base);
@@ -194,9 +196,15 @@
     }
     &-score {
       grid-column: 2 / 3;
-      font-size: $h6-size;
+      font-size: $h4-size;
       font-weight: 700;
       text-align: center;
+      &-over {
+        color: setcolor(red, base);
+      }
+      &-under {
+        color: setcolor(green, base);
+      }
     }
   }
 

@@ -34,8 +34,23 @@
         };
         if (courseList == null && playerList) {
           document.querySelector('.setup-modal-nocourse').classList.add('setup-modal-nocourse-open');
+          // display primary player first name as it's always chosen
+          let displayedPlayers = document.querySelector('.selections-players');
+          playerList.forEach(function(player) {
+            if (player.primary == true) {
+              displayedPlayers.innerHTML = player.nameFirst;
+            }
+          });
         };
         if (courseList && playerList) {
+          // display primary player first name as it's always chosen
+          let displayedPlayers = document.querySelector('.selections-players');
+          playerList.forEach(function(player) {
+            if (player.primary == true) {
+              displayedPlayers.innerHTML = player.nameFirst;
+            }
+          });
+
           roundsetup.buildCourseModal(courseList);
           roundsetup.buildPlayersModal(playerList);
         };
