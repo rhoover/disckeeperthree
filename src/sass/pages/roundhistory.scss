@@ -1,6 +1,37 @@
-.roundhistory {
-  grid-template-rows: repeat(4, max-content);
-  &-header {
-    @extend %inner-header;
+.round-history {
+  row-gap: $h5-size;
+  &-round {
+    display: grid;
+    border-radius: 0.25rem;
+    border: 1px solid setcolor(blue, base);
+    @extend %box-shadow;
+    &-header {
+      padding: $h5-size $p-size;
+      border-bottom: 1px solid setcolor(blue, dark25);
+      background-color: rgba(setcolor(blue, base), 0.15);
+      font-size: $h5-size;
+      font-weight: 700;
+      & span {
+        float: right;
+        font-size: $p-size;
+        font-weight: 400;
+      }
+    }
+    &-data {
+      padding: $p-size;
+      line-height: $h4-size;
+      &-name {
+        font-size: $h5-size;
+        line-height: $h4-size;
+        font-weight: 700;
+      }
+      &-score {
+        margin-bottom: $h5-size;
+        font-size: $h6-size;
+        & span {
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
