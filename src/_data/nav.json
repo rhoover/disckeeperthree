@@ -14,11 +14,7 @@
     "slug": "players",
     "url": "/players.html"
   },
-  {
-    "label": "Round History",
-    "slug": "roundhistory",
-    "url": "/roundhistory.html"
-  },
+
   {
     "label": "See Your Stats",
     "slug": "statistics",
