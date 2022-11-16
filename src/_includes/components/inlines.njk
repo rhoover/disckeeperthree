@@ -58,4 +58,12 @@
     {% include "../../js-inline/mins/roundhistory-min.js" %}
   </script>
   {% endif %}
+
+  {% if page.fileSlug == 'statistics' %}
+  <!-- statistics behavior -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script>
+    {% include "../../js-inline/mins/statistics-min.js" %}
+  </script>
+  {% endif %}
   
