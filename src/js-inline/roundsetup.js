@@ -6,12 +6,12 @@
     init() {
 
       // get both lists
-      async function getPlayerList() {
+      async function getLists() {
         const playerFetch = await localforage.getItem('playerList');
         const courseFetch = await localforage.getItem('courseList');
         return [playerFetch, courseFetch];
       };
-      getPlayerList()
+      getLists()
         .then(fetchedData => {
           roundsetup.dataChecks(fetchedData[0], fetchedData[1]);
         });
@@ -39,7 +39,8 @@
           playerList.forEach(function(player) {
             if (player.primary == true) {
               displayedPlayers.innerHTML = player.nameFirst;
-            }
+              roundsetup.assembleFinalInfo(player);
+            };
           });
         };
         if (courseList && playerList) {
@@ -48,7 +49,8 @@
           playerList.forEach(function(player) {
             if (player.primary == true) {
               displayedPlayers.innerHTML = player.nameFirst;
-            }
+              roundsetup.assembleFinalInfo(player);
+            };
           });
 
           roundsetup.buildCourseModal(courseList);
@@ -229,7 +231,8 @@
       roundsetup.assembleFinalInfo(chosenPlayers);
     },
 
-    assembleFinalInfo() {
+    assembleFinalInfo(primaryPlayer) {
+      
       let submitButton = document.querySelector('[rh-goscore]');
 
       submitButton.addEventListener('click', event => {
@@ -243,6 +246,11 @@
         .then(data => {
           let players = data[0];
           let course = data[1];
+
+          if (!players) {
+            players = [];
+            players.push(primaryPlayer);
+          }
 
           for (let i = 0; i < players.length; i++) {
             //add course meta for round saves
