@@ -142,7 +142,7 @@
       for (let i = 0; i < holeThrows.length; i++) {
         for (let j = 0; j < holeThrows[i].length; j++) {
           console.log('holeThrows index', i);
-          // if (i < holeThrows.length - 1) {
+          if (i < holeThrows.length - 1) {
             let eachHoleThrows = holeThrows.map(d => d[j]);
             console.log('Hole Number: ', holeNumber[j]);
             let sum = eachHoleThrows.reduce((partialSum, a) => partialSum + a, 0);
@@ -152,18 +152,7 @@
             // seriesObj.data = [];
             seriesObj.data.push(average);
             console.log('series obj:', seriesObj);
-          // } // else {
-            // let eachHoleThrows = holeThrows.map(d => d[j]);
-            // console.log('Hole Number: ', holeNumber[j]);
-            // let sum = eachHoleThrows.reduce((partialSum, a) => partialSum + a, 0);
-            // let average = sum / eachHoleThrows.length;
-            // console.log('average', average);
-            // seriesObj.name = 'Avg';
-            // seriesObj.data = [];
-            // seriesObj.data.push(average);
-            // console.log('series obj:', seriesObj);
-
-          // };// end if-else
+          };// end if
         };// end inner for loop
       };// end initial for loop
     } // end buildPlayerChartData

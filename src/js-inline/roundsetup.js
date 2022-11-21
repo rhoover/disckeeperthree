@@ -16,6 +16,8 @@
           roundsetup.dataChecks(fetchedData[0], fetchedData[1]);
         });
 
+        localforage.setItem('chosenPlayers', []);
+
       // fix to stop modals displaying on page load
       let modals = document.querySelectorAll('[style="visibility:hidden;"]');
         setTimeout(() => {
@@ -218,7 +220,6 @@
       let displayedCourse = document.querySelector('.selections-course');
       let displayedCourseOutput = chosenCourse.name;
       displayedCourse.innerHTML = displayedCourseOutput;
-      roundsetup.assembleFinalInfo(chosenCourse);
     },
 
     displayPlayersSelection(chosenPlayers) {
@@ -228,11 +229,9 @@
         displayedPlayersOutput += `${player.nameFirst}, `;
       });
       displayedPlayers.innerHTML = displayedPlayersOutput;
-      roundsetup.assembleFinalInfo(chosenPlayers);
     },
 
     assembleFinalInfo(primaryPlayer) {
-      
       let submitButton = document.querySelector('[rh-goscore]');
 
       submitButton.addEventListener('click', event => {
@@ -247,10 +246,9 @@
           let players = data[0];
           let course = data[1];
 
-          if (!players) {
-            players = [];
-            players.push(primaryPlayer);
-          }
+          // set primary player in chosenPlayers array from idb
+          players = [];
+          players.push(primaryPlayer);
 
           for (let i = 0; i < players.length; i++) {
             //add course meta for round saves
@@ -264,6 +262,7 @@
           // re-save players new data
           localforage.setItem('chosenPlayers', players);
         }); // end .then
+        
 
         // off to the show
         setTimeout(() => {
