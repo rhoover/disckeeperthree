@@ -138,24 +138,30 @@
 
       //https://stackoverflow.com/questions/7848004/get-column-from-a-two-dimensional-array
 
-      console.log('series Array:',seriesArray);
+
       for (let i = 0; i < holeThrows.length; i++) {
         for (let j = 0; j < holeThrows[i].length; j++) {
           console.log('holeThrows index', i);
-          if (i < holeThrows.length - 1) {
+          if (i == 0) {
             let eachHoleThrows = holeThrows.map(d => d[j]);
+            console.log('eachHoleThrows:', eachHoleThrows);
             console.log('Hole Number: ', holeNumber[j]);
+            let hiThrow = Math.max(...eachHoleThrows);
+            let loThrow = Math.min(...eachHoleThrows);
             let sum = eachHoleThrows.reduce((partialSum, a) => partialSum + a, 0);
             let average = sum / eachHoleThrows.length;
-            console.log('average', average);
+            average = parseInt(average.toFixed(2));
+            console.log('hi', hiThrow, 'low', loThrow, 'average', average);
             seriesObj.name = 'Avg';
-            // seriesObj.data = [];
-            seriesObj.data.push(average);
+            seriesObj.data.push(hiThrow, loThrow, average);
             console.log('series obj:', seriesObj);
-          };// end if
+          } else {return};// end if
         };// end inner for loop
       };// end initial for loop
     } // end buildPlayerChartData
+
+
+
   } // end statistics
 
 
