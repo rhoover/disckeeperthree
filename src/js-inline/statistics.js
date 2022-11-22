@@ -109,52 +109,67 @@
     },
 
     buildPlayerChartData(incomingPlayerHoles, incomingCourseName) { //incomingRoundDates
-      console.log('player data:', incomingPlayerHoles);
-      // console.log('round dates:', incomingRoundDates);
-      console.log('course name:', incomingCourseName);
+
+      //declaring all the things
       let holeNumber = [];
       let holeThrows = [];
       let eachRound;
       let seriesArray = [];
-      let seriesObj = {};
-      seriesObj.name = '';
-      seriesObj.data = [];
+      let hiScoreObj = {};
+      let loScoreObj = {};
+      let avgScoreObj = {};
+      let hiThrow;
+      let loThrow;
+      let sum;
+      let averageThrow
+      hiScoreObj.name = 'Hi Score';
+      loScoreObj.name = 'Lo Score';
+      avgScoreObj.name = 'Average';
+      hiScoreObj.data = [];
+      loScoreObj.data = [];
+      avgScoreObj.data = [];
 
+      //creating the 'categories' data for highcharts, which is the hole name down the left of the chart containing the hi-lo-average for each hole
       incomingPlayerHoles[0].forEach(round => {
         let holeName = 'Hole' + '-' + round.holeNumber;
         holeNumber.push(holeName);
       });
+
+      //filtereing out just the throws for each hole for each round
       incomingPlayerHoles.forEach((round, index) => {
         eachRound = round.map((currentRound, i) => currentRound.throws);
         holeThrows.push(eachRound);
       });
-      
-      console.table(holeThrows);
-      console.log('hole throws:', holeThrows);
-      console.log('hole numbers:', holeNumber);
 
       //https://stackoverflow.com/questions/7848004/get-column-from-a-two-dimensional-array
-
-
       for (let i = 0; i < holeThrows.length; i++) {
         for (let j = 0; j < holeThrows[i].length; j++) {
+          // limiting to just the first round as the table collects up all the rounds...
           if (i == 0) {
+            //...and this collects the column containg all the rounds for each hole.
             let eachHoleThrows = holeThrows.map(d => d[j]);
-            console.log('eachHoleThrows:', eachHoleThrows);
-            console.log('Hole Number: ', holeNumber[j]);
-            let hiThrow = Math.max(...eachHoleThrows);
-            let loThrow = Math.min(...eachHoleThrows);
-            let sum = eachHoleThrows.reduce((partialSum, a) => partialSum + a, 0);
-            let average = sum / eachHoleThrows.length;
-            average = parseInt(average.toFixed(2));
-            console.log('hi', hiThrow, 'low', loThrow, 'average', average);
-            seriesObj.name = 'Avg';
-            seriesObj.data.push(hiThrow, loThrow, average);
-            console.log('series obj:', seriesObj);
-          } else {return};// end if
+            //filtering for hi-lo-average
+            hiThrow = Math.max(...eachHoleThrows);
+            loThrow = Math.min(...eachHoleThrows);
+            sum = eachHoleThrows.reduce((partialSum, a) => partialSum + a, 0);
+            averageThrow = sum / eachHoleThrows.length;
+            averageThrow = Math.round( averageThrow * 1e2 ) / 1e2;;
+            //bunging into each object for the highcharts series array
+            hiScoreObj.data.push(hiThrow);
+            loScoreObj.data.push(loThrow);
+            avgScoreObj.data.push(averageThrow);
+          };// end if
         };// end inner for loop
       };// end initial for loop
-    } // end buildPlayerChartData
+      //and finally bunging into the highcharts series data array
+      seriesArray.push(hiScoreObj, loScoreObj, avgScoreObj);
+
+      statistics.renderChart(holeNumber, seriesArray);
+    }, // end buildPlayerChartData
+
+    renderChart(incomingHoleName, incomingSeriesData) {
+      console.log(incomingHoleName, incomingSeriesData);
+    }
 
 
 
