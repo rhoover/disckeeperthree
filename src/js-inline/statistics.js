@@ -69,18 +69,15 @@
         //   },
         //   series: [{
         //      name, which displays in legend, will be high or low or average
-        //     name: 'Year 1990',
-        //      3 data numbers in each array will be hi, low, average for each hole, aka 18 objects to correspond to 18 holes from categories
+        //     name: 'Hi Score',
+        //      18 data numbers in each array will be hi, low, average for each hole, aka 18 objects to correspond to 18 holes from categories
         //     data: [-631, 727, 3202, 721, 26]
         //   }, {
-        //     name: 'Year 2000',
+        //     name: 'Lo Score',
         //     data: [814, 841, 3714, 726, 31]
         //   }, {
-        //     name: 'Year 2010',
+        //     name: 'Avg Score',
         //     data: [1044, -644, 4170, 735, 40]
-        //   }, {
-        //     name: 'Year 2018',
-        //     data: [1276, 1007, 4561, 746, 42]
         //   }]
         // });
     }, // end init
@@ -141,7 +138,6 @@
 
       for (let i = 0; i < holeThrows.length; i++) {
         for (let j = 0; j < holeThrows[i].length; j++) {
-          console.log('holeThrows index', i);
           if (i == 0) {
             let eachHoleThrows = holeThrows.map(d => d[j]);
             console.log('eachHoleThrows:', eachHoleThrows);
