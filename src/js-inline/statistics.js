@@ -12,74 +12,6 @@
         .then(data => {
           statistics.buildCourseData(data);
         });
-        // Highcharts.chart('holeData', {
-        //   chart: {
-        //     type: 'bar'
-        //   },
-        //   title: {
-        //     text: 'Historic World Population by Region'
-        //   },
-        //   subtitle: {
-        //     text: 'Source: <a ' +
-        //       'href="https://en.wikipedia.org/wiki/List_of_continents_and_continental_subregions_by_population"' +
-        //       'target="_blank">Wikipedia.org</a>'
-        //   },
-        //   xAxis: {
-        //    rh: holes array will go here
-        //     categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'], 
-        //
-        //     title: {
-        //       text: null
-        //     }
-        //   },
-        //   yAxis: {
-        //     min: -700,
-        //     title: {
-        //       text: 'Population (millions)',
-        //       align: 'high'
-        //     },
-        //     labels: {
-        //       overflow: 'justify'
-        //     }
-        //   },
-        //   tooltip: {
-        //     valueSuffix: ' millions'
-        //   },
-        //   plotOptions: {
-        //     bar: {
-        //       dataLabels: {
-        //         enabled: true
-        //       }
-        //     }
-        //   },
-        //   legend: {
-        //     layout: 'vertical',
-        //     align: 'right',
-        //     verticalAlign: 'top',
-        //     x: -40,
-        //     y: 80,
-        //     floating: true,
-        //     borderWidth: 1,
-        //     backgroundColor:
-        //       Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-        //     shadow: true
-        //   },
-        //   credits: {
-        //     enabled: false
-        //   },
-        //   series: [{
-        //      name, which displays in legend, will be high or low or average
-        //     name: 'Hi Score',
-        //      18 data numbers in each array will be hi, low, average for each hole, aka 18 objects to correspond to 18 holes from categories
-        //     data: [-631, 727, 3202, 721, 26]
-        //   }, {
-        //     name: 'Lo Score',
-        //     data: [814, 841, 3714, 726, 31]
-        //   }, {
-        //     name: 'Avg Score',
-        //     data: [1044, -644, 4170, 735, 40]
-        //   }]
-        // });
     }, // end init
 
     buildCourseData(incomingRoundsData) {
@@ -169,7 +101,62 @@
 
     renderChart(incomingHoleName, incomingSeriesData) {
       console.log(incomingHoleName, incomingSeriesData);
-    }
+      Highcharts.chart('holeData', {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Waterbury'
+      },
+      subtitle: {
+        text: '<p>High - Low - Average Throws By Hole</p>'
+      },
+      xAxis: {
+        //rh: holes-name array will go here
+        categories: incomingHoleName, 
+    
+        title: {
+          text: null
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Throws',
+          align: 'high'
+        },
+        labels: {
+          overflow: 'justify'
+        }
+      },
+      tooltip: {
+        valueSuffix: 'score'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+      },
+      credits: {
+        enabled: false
+      },
+      series: incomingSeriesData
+      });// end Highcharts
+    } //end renderChart
 
 
 
