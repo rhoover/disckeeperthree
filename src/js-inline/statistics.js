@@ -10,14 +10,36 @@
       };
       getRounds()
         .then(data => {
-          statistics.buildCourseData(data);
+          statistics.selectBox(data);
         });
     }, // end init
 
-    buildCourseData(incomingRoundsData) {
+    selectBox(incomingRoundsData) {
+
+      //build remaining selectbox of round courses
+      let courseName = "";
+      let selectElement = document.querySelector('#courses');
+      let selectOutput = "";
+      //remove duplicate courses merely for selectbox purposes
+      let uniqueArray = [...new Map(incomingRoundsData.map(v => [v.courseID, v])).values()];
+      //build options
+      uniqueArray.forEach(function(round) {
+        selectOutput += `<option value=${round.courseID}>${round.course}</option>`;
+      });
+      selectElement.innerHTML += selectOutput;
+
+      selectElement.addEventListener('change', function(event) {
+        let option = event.target.options[event.target.selectedIndex];
+        selectedCourseName = option.text;
+        statistics.buildCourseData(incomingRoundsData, selectedCourseName);
+      });
+
+    },
+
+    buildCourseData(incomingRoundsData, incomingCourseName) {
       let courseData = [];
       incomingRoundsData.forEach(round => {
-        if (round.course == 'Waterbury') {
+        if (round.course == incomingCourseName) {
           courseData.push(round);
         }
       });
@@ -67,7 +89,7 @@
         holeNumber.push(holeName);
       });
 
-      //filtereing out just the throws for each hole for each round
+      //filtering out just the throws for each hole for each round
       incomingPlayerHoles.forEach((round, index) => {
         eachRound = round.map((currentRound, i) => currentRound.throws);
         holeThrows.push(eachRound);
