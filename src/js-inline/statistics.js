@@ -105,7 +105,10 @@
       Highcharts.chart('holeData', {
       chart: {
         type: 'bar',
-        height: 800
+        height: 800,
+        style: {
+          fontFamily: 'Quicksand'
+        }
       },
       title: {
         text: 'Waterbury',
