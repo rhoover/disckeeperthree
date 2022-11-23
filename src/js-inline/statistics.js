@@ -35,7 +35,7 @@
         statistics.buildCourseData(incomingRoundsData, selectedCourseName);
       });
 
-    },
+    },// end selectBox
 
     buildCourseData(incomingRoundsData, selectedCourseName) {
       let courseData = [];
@@ -46,7 +46,7 @@
       });
       console.log('courseData:', courseData);
       statistics.filterPlayerData(courseData, selectedCourseName);
-    },
+    },// end buildCourseData
 
     filterPlayerData(courseData, selectedCourseName) {
       let courseName = courseData[0].course;
@@ -61,7 +61,7 @@
         });
       });
       statistics.buildPlayerChartData(playerHoles, selectedCourseName); //roundDates
-    },
+    },// end filterPlayerData
 
     buildPlayerChartData(incomingPlayerHoles, selectedCourseName) { //incomingRoundDates
 
