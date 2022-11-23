@@ -17,7 +17,7 @@
     selectBox(incomingRoundsData) {
 
       //build remaining selectbox of round courses
-      let courseName = "";
+      let selectedCourseName = "";
       let selectElement = document.querySelector('#courses');
       let selectOutput = "";
       //remove duplicate courses merely for selectbox purposes
@@ -31,23 +31,24 @@
       selectElement.addEventListener('change', function(event) {
         let option = event.target.options[event.target.selectedIndex];
         selectedCourseName = option.text;
+        console.log(selectedCourseName);
         statistics.buildCourseData(incomingRoundsData, selectedCourseName);
       });
 
     },
 
-    buildCourseData(incomingRoundsData, incomingCourseName) {
+    buildCourseData(incomingRoundsData, selectedCourseName) {
       let courseData = [];
       incomingRoundsData.forEach(round => {
-        if (round.course == incomingCourseName) {
+        if (round.course == selectedCourseName) {
           courseData.push(round);
         }
       });
       console.log('courseData:', courseData);
-      statistics.filterPlayerData(courseData);
+      statistics.filterPlayerData(courseData, selectedCourseName);
     },
 
-    filterPlayerData(courseData) {
+    filterPlayerData(courseData, selectedCourseName) {
       let courseName = courseData[0].course;
       let roundDates = [];
       let playerHoles = [];
@@ -59,10 +60,10 @@
           }
         });
       });
-      statistics.buildPlayerChartData(playerHoles, courseName); //roundDates
+      statistics.buildPlayerChartData(playerHoles, selectedCourseName); //roundDates
     },
 
-    buildPlayerChartData(incomingPlayerHoles, incomingCourseName) { //incomingRoundDates
+    buildPlayerChartData(incomingPlayerHoles, selectedCourseName) { //incomingRoundDates
 
       //declaring all the things
       let holeNumber = [];
@@ -118,10 +119,10 @@
       //and finally bunging into the highcharts series data array
       seriesArray.push(loScoreObj, hiScoreObj, avgScoreObj);
 
-      statistics.renderChart(holeNumber, seriesArray);
+      statistics.renderChart(holeNumber, seriesArray, selectedCourseName);
     }, // end buildPlayerChartData
 
-    renderChart(incomingHoleName, incomingSeriesData) {
+    renderChart(incomingHoleName, incomingSeriesData, selectedCourseName) {
 
       //https://www.highcharts.com/demo/bar-basic/grid-light
       Highcharts.chart('holeData', {
@@ -133,7 +134,7 @@
         }
       },
       title: {
-        text: 'Waterbury',
+        text: selectedCourseName,
         align: 'left'
       },
       subtitle: {
