@@ -94,22 +94,26 @@
         };// end inner for loop
       };// end initial for loop
       //and finally bunging into the highcharts series data array
-      seriesArray.push(hiScoreObj, loScoreObj, avgScoreObj);
+      seriesArray.push(loScoreObj, hiScoreObj, avgScoreObj);
 
       statistics.renderChart(holeNumber, seriesArray);
     }, // end buildPlayerChartData
 
     renderChart(incomingHoleName, incomingSeriesData) {
-      console.log(incomingHoleName, incomingSeriesData);
+
+      //https://www.highcharts.com/demo/bar-basic/grid-light
       Highcharts.chart('holeData', {
       chart: {
-        type: 'bar'
+        type: 'bar',
+        height: 800
       },
       title: {
-        text: 'Waterbury'
+        text: 'Waterbury',
+        align: 'left'
       },
       subtitle: {
-        text: '<p>High - Low - Average Throws By Hole</p>'
+        text: '<p>High - Low - Average Throws By Hole</p>',
+        align: 'left'
       },
       xAxis: {
         //rh: holes-name array will go here
@@ -143,8 +147,8 @@
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'top',
-        x: -40,
-        y: 80,
+        x: 0,
+        y: 0,
         floating: true,
         borderWidth: 1,
         backgroundColor:
