@@ -246,10 +246,6 @@
           let players = data[0];
           let course = data[1];
 
-          // set primary player in chosenPlayers array from idb
-          players = [];
-          players.push(primaryPlayer);
-
           for (let i = 0; i < players.length; i++) {
             //add course meta for round saves
             players[i].courseScored = course.name;
