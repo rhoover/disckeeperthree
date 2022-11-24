@@ -52,6 +52,7 @@
       let courseName = courseData[0].course;
       let roundDates = [];
       let playerHoles = [];
+      let numberOfRounds = courseData.length;
       courseData.forEach(course => {
         course.players.forEach(player => {
           if (player.primary) {
@@ -60,10 +61,10 @@
           }
         });
       });
-      statistics.buildPlayerChartData(playerHoles, selectedCourseName); //roundDates
+      statistics.buildPlayerChartData(playerHoles, selectedCourseName, numberOfRounds); //roundDates
     },// end filterPlayerData
 
-    buildPlayerChartData(incomingPlayerHoles, selectedCourseName) { //incomingRoundDates
+    buildPlayerChartData(incomingPlayerHoles, selectedCourseName, numberOfRounds) { //incomingRoundDates
 
       //declaring all the things
       let holeNumber = [];
@@ -119,10 +120,10 @@
       //and finally bunging into the highcharts series data array
       seriesArray.push(loScoreObj, hiScoreObj, avgScoreObj);
 
-      statistics.renderChart(holeNumber, seriesArray, selectedCourseName);
+      statistics.renderChart(holeNumber, seriesArray, selectedCourseName, numberOfRounds);
     }, // end buildPlayerChartData
 
-    renderChart(incomingHoleName, incomingSeriesData, selectedCourseName) {
+    renderChart(incomingHoleName, incomingSeriesData, selectedCourseName, numberOfRounds) {
 
       //https://www.highcharts.com/demo/bar-basic/grid-light
       Highcharts.chart('holeData', {
@@ -138,7 +139,7 @@
         align: 'left'
       },
       subtitle: {
-        text: '<p>High - Low - Average Throws By Hole</p>',
+        text: `<p>Hi/LowAvg Throws By Hole over ${numberOfRounds} Rounds</p>`,
         align: 'left'
       },
       xAxis: {
