@@ -250,6 +250,8 @@
       <p class="roundscoring-modal-round-date">${course.roundDate}</p>`;
 
       players.forEach(function(player) {
+        player.finalScore = player.holes[roundIndex].overUnderRound;
+        player.finalThrows = player.holes[roundIndex].throwsRound;
         roundDataOutput += `
         <div class="roundscoring-modal-player">
         <p class="roundscoring-modal-player-name">${player.nameFirst}</p>

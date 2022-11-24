@@ -41,6 +41,8 @@
           playerList.forEach(function(player) {
             if (player.primary == true) {
               displayedPlayers.innerHTML = player.nameFirst;
+              let primaryPlayer = player;
+              localforage.setItem('chosenPlayers', [primaryPlayer]);
               roundsetup.assembleFinalInfo(player);
             };
           });
@@ -51,6 +53,8 @@
           playerList.forEach(function(player) {
             if (player.primary == true) {
               displayedPlayers.innerHTML = player.nameFirst;
+              let primaryPlayer = player;
+              localforage.setItem('chosenPlayers', [primaryPlayer]);
               roundsetup.assembleFinalInfo(player);
             };
           });
@@ -232,6 +236,9 @@
     },
 
     assembleFinalInfo(primaryPlayer) {
+
+      // primaryPlayer is there solely so the function gets called by someone else and can execute
+
       let submitButton = document.querySelector('[rh-goscore]');
 
       submitButton.addEventListener('click', event => {
