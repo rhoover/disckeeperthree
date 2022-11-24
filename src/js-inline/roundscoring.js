@@ -252,6 +252,8 @@
       players.forEach(function(player) {
         player.finalScore = player.holes[roundIndex].overUnderRound;
         player.finalThrows = player.holes[roundIndex].throwsRound;
+
+        console.log(player);
         roundDataOutput += `
         <div class="roundscoring-modal-player">
         <p class="roundscoring-modal-player-name">${player.nameFirst}</p>
