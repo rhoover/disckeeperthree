@@ -1,0 +1,22 @@
+#courses {
+  border: 1px solid setcolor(blue, base);
+  border-radius: 0.25em;
+  padding: $p-size;
+  font-size: $h6-size;
+  line-height: $h5-size;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  margin-bottom: 2rem;
+  @extend %box-shadow;
+}
+
+text.highcharts-axis-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.highcharts-xaxis-labels {
+  & text {
+    font-size: 14px !important;
+    font-weight: 700;
+  }
+}

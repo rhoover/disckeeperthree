@@ -31,7 +31,6 @@
       selectElement.addEventListener('change', function(event) {
         let option = event.target.options[event.target.selectedIndex];
         selectedCourseName = option.text;
-        console.log(selectedCourseName);
         statistics.buildCourseData(incomingRoundsData, selectedCourseName);
       });
 
@@ -44,27 +43,28 @@
           courseData.push(round);
         }
       });
-      console.log('courseData:', courseData);
-      statistics.filterPlayerData(courseData, selectedCourseName);
+      statistics.filterThrowsData(courseData, selectedCourseName);
+      statistics.filterRoundsData(courseData, selectedCourseName);
     },// end buildCourseData
 
-    filterPlayerData(courseData, selectedCourseName) {
-      let courseName = courseData[0].course;
-      let roundDates = [];
+    filterThrowsData(courseData, selectedCourseName) {
       let playerHoles = [];
       let numberOfRounds = courseData.length;
       courseData.forEach(course => {
         course.players.forEach(player => {
           if (player.primary) {
             playerHoles.push(player.holes);
-            // roundDates.push(player.coursePlayedDate);
           }
         });
       });
-      statistics.buildPlayerChartData(playerHoles, selectedCourseName, numberOfRounds); //roundDates
-    },// end filterPlayerData
+      statistics.buildThrowsChartData(playerHoles, selectedCourseName, numberOfRounds); 
+    },// end filterThrowsData
 
-    buildPlayerChartData(incomingPlayerHoles, selectedCourseName, numberOfRounds) { //incomingRoundDates
+    filterRoundsData(courseData, selectedCourseName) {
+      console.log(courseData);
+    },
+
+    buildThrowsChartData(incomingPlayerHoles, selectedCourseName, numberOfRounds) {
 
       //declaring all the things
       let holeNumber = [];
@@ -120,10 +120,12 @@
       //and finally bunging into the highcharts series data array
       seriesArray.push(loScoreObj, hiScoreObj, avgScoreObj);
 
-      statistics.renderChart(holeNumber, seriesArray, selectedCourseName, numberOfRounds);
-    }, // end buildPlayerChartData
+      statistics.renderThrowsChart(holeNumber, seriesArray, selectedCourseName, numberOfRounds);
+    }, // end buildThrowsChartData
 
-    renderChart(incomingHoleName, incomingSeriesData, selectedCourseName, numberOfRounds) {
+    buildRoundsChartData() {},
+
+    renderThrowsChart(incomingHoleName, incomingSeriesData, selectedCourseName, numberOfRounds) {
 
       //https://www.highcharts.com/demo/bar-basic/grid-light
       Highcharts.chart('holeData', {
@@ -139,12 +141,13 @@
         align: 'left'
       },
       subtitle: {
-        text: `<p>Hi/LowAvg Throws By Hole over ${numberOfRounds} Rounds</p>`,
+        text: `<p>Hi/Low/Avg Throws By Hole over ${numberOfRounds} Rounds</p>`,
         align: 'left'
       },
       xAxis: {
         //rh: holes-name array will go here
-        categories: incomingHoleName, 
+        categories: incomingHoleName,
+        gridLineWidth: 1,
     
         title: {
           text: null
@@ -152,6 +155,7 @@
       },
       yAxis: {
         min: 0,
+        gridLineWidth: 1,
         title: {
           text: 'Throws',
           align: 'high'
@@ -185,9 +189,14 @@
       credits: {
         enabled: false
       },
+      accessibility: {
+        enabled: false
+      },
       series: incomingSeriesData
       });// end Highcharts
-    } //end renderChart
+    }, //end renderThrowsChart
+
+    renderRoundScoresChart () {}
 
 
 

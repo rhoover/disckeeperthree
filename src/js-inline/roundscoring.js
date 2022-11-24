@@ -280,7 +280,7 @@
         course: course.name,
         courseID: course.courseID,
         roundID: course.roundID,
-        date: new Date().toLocaleDateString('en-US')
+        roundDate: new Date().toLocaleDateString('en-US')
       };
 
       savedRoundsArray = [];
