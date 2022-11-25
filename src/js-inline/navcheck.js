@@ -2,12 +2,12 @@
   'use strict';
   window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
-      var navMainOpen = document.querySelector('.nav-main-open');
+      var navMainOpen = document.querySelector('.nav-open');
       var menuButtText = document.querySelector('.menu-button-text');
       var menuButtWrap = document.querySelector('.menu-toggle');
 
       if (navMainOpen) {
-        navMainOpen.classList.remove('nav-main-open')
+        navMainOpen.classList.remove('nav-open')
       }
       if (menuButtWrap) {
         menuButtWrap.classList.remove('opened');
