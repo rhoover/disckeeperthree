@@ -1,5 +1,6 @@
 .round-history {
   row-gap: $h5-size;
+  grid-auto-rows: minmax(min-content, max-content);
   &-round {
     display: grid;
     border-radius: 0.25rem;
@@ -18,7 +19,7 @@
       }
     }
     &-data {
-      padding: $p-size;
+      padding: $h6-size;
       line-height: $h4-size;
       &-name {
         font-size: $h5-size;
@@ -26,7 +27,7 @@
         font-weight: 700;
       }
       &-score {
-        margin-bottom: $h5-size;
+        line-height: $h3-size;
         font-size: $h6-size;
         & span {
           font-weight: 700;
