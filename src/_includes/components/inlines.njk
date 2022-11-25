@@ -20,8 +20,6 @@
     {% include "../../js-inline/mins/localForage-config-min.js" %}
   </script>
   
-  {# <script defer src="{{ '/js/atomic.min.js' | url }}"></script> #}
-
   {% if page.fileSlug == 'create-player' %}
   <!-- createplayer behavior-->
   <script>
@@ -69,6 +67,13 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script>
     {% include "../../js-inline/mins/statistics-min.js" %}
+  </script>
+  {% endif %}
+
+  {% if page.fileSlug == 'list-players' %}
+  <!-- list players behavior -->
+  <script>
+    {% include "../../js-inline/mins/listplayers-min.js" %}
   </script>
   {% endif %}
   
