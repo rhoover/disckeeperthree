@@ -40,7 +40,7 @@
           </div>`;
       });
 
-      roundsList.innerHTML = roundsOutput;
+      roundsList.innerHTML += roundsOutput;
 
     }
 

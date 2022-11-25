@@ -1,6 +1,16 @@
 .round-history {
   row-gap: $h5-size;
   grid-auto-rows: minmax(min-content, max-content);
+  &-stats {
+    color: setcolor(blue, base);
+    font-size: $h6-size;
+    text-decoration: none;
+    text-align: center;
+    padding: $p-size;
+    border: 1px solid setcolor(blue, dark25);
+    border-radius: 0.25em;
+    @extend %box-shadow;
+  }
   &-round {
     display: grid;
     border-radius: 0.25rem;
