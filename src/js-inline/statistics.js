@@ -44,7 +44,7 @@
         }
       });
       statistics.filterThrowsData(courseData, selectedCourseName);
-      statistics.filterRoundsData(courseData, selectedCourseName);
+      statistics.buildRoundsChartData(courseData, selectedCourseName);
     },// end buildCourseData
 
     filterThrowsData(courseData, selectedCourseName) {
@@ -59,10 +59,6 @@
       });
       statistics.buildThrowsChartData(playerHoles, selectedCourseName, numberOfRounds); 
     },// end filterThrowsData
-
-    filterRoundsData(courseData, selectedCourseName) {
-      console.log(courseData);
-    },
 
     buildThrowsChartData(incomingPlayerHoles, selectedCourseName, numberOfRounds) {
 
@@ -123,7 +119,33 @@
       statistics.renderThrowsChart(holeNumber, seriesArray, selectedCourseName, numberOfRounds);
     }, // end buildThrowsChartData
 
-    buildRoundsChartData() {},
+    buildRoundsChartData(courseData, selectedCourseName) {
+      console.table(courseData);
+      //declaring all the things
+      let roundLength = courseData.length;
+      let roundDate = [];
+      let scoresObj = {};
+      let throwsObj = {};
+      scoresObj.name = 'Round Score';
+      throwsObj.name = 'Round Throws';
+      scoresObj.data = [];
+      throwsObj.data = [];
+      let seriesArray = [];
+
+      //creating the "categories" array which is the dates down the left side of the chart
+      courseData.forEach(round => {
+        roundDate.push(round.roundDate);
+      });
+
+      //bunging into each opject for the highcharts series array
+      for (let i = 0; i < courseData.length; i++) {
+          scoresObj.data.push(courseData[i].players[0].finalScore);
+          throwsObj.data.push(courseData[i].players[0].finalThrows);
+      };
+      seriesArray.push(scoresObj, throwsObj);
+
+      statistics.renderRoundScoresChart(seriesArray, roundDate, selectedCourseName, roundLength);
+    },
 
     renderThrowsChart(incomingHoleName, incomingSeriesData, selectedCourseName, numberOfRounds) {
 
@@ -196,7 +218,74 @@
       });// end Highcharts
     }, //end renderThrowsChart
 
-    renderRoundScoresChart () {}
+    renderRoundScoresChart (seriesArray, roundDate, selectedCourseName, roundLength) {
+      Highcharts.chart('roundData', {
+      chart: {
+        type: 'bar',
+        height: 800,
+        style: {
+          fontFamily: 'Quicksand'
+        }
+      },
+      title: {
+        text: selectedCourseName,
+        align: 'left'
+      },
+      subtitle: {
+        text: `<p>Final Scores And Throws over ${roundLength} Rounds</p>`,
+        align: 'left'
+      },
+      xAxis: {
+        //rh: holes-name array will go here
+        categories: roundDate,
+        gridLineWidth: 1,
+    
+        title: {
+          text: null
+        }
+      },
+      yAxis: {
+        min: -20,
+        gridLineWidth: 1,
+        title: {
+          text: 'Round Results',
+          align: 'high'
+        },
+        labels: {
+          overflow: 'justify'
+        }
+      },
+      tooltip: {
+        valueSuffix: 'score'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: 0,
+        y: 0,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+      },
+      credits: {
+        enabled: false
+      },
+      accessibility: {
+        enabled: false
+      },
+      series: seriesArray
+      });// end Highcharts}
+    }
 
 
 

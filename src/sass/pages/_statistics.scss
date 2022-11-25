@@ -5,8 +5,15 @@
   font-size: $h6-size;
   line-height: $h5-size;
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-  margin-bottom: 2rem;
+  margin-bottom: $h5-size;
   @extend %box-shadow;
+}
+
+#holeData {
+  margin-bottom: $h5-size;
+}
+#roundData {
+  margin-bottom: $h2-size;
 }
 
 text.highcharts-axis-title {
