@@ -15,5 +15,12 @@
       {{ critical | safe }}
     </style>
     <!-- all other styles -->
-    {% cssLink %}  
+    {% cssLink %}
+    <!-- service worker initialize -->
+    <script>  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/disckeeper-service-worker-min.js');
+    });
+  };
+    </script>
   </head>

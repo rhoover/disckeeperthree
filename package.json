@@ -23,6 +23,7 @@
     "navcheckmin": "terser src/js-inline/navcheck.js -o src/js-inline/mins/navcheck-min.js",
     "listplayersmin": "terser src/js-inline/listplayers.js -o src/js-inline/mins/listplayers-min.js",
     "listcoursesmin": "terser src/js-inline/listcourses.js -o src/js-inline/mins/listcourses-min.js",
+    "servicemin": "terser disckeeper-service-worker.js -o disckeeper-service-worker-min.js",
     "serve": "rm -rf dist && npx @11ty/eleventy --serve",
     "build": "rm -rf dist && npx @11ty/eleventy"
   },
