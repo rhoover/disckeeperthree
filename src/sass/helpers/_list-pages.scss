@@ -1,0 +1,22 @@
+%list-main {
+  grid-auto-rows: minmax(min-content, max-content);
+  row-gap: $h6-size;
+}
+
+%list-item {
+  display: grid;
+  border-radius: 0.25rem;
+  border: 1px solid setcolor(blue, base);
+  @extend %box-shadow;
+}
+
+%list-name {
+  font-size: $h5-size;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+%list-delete-text {
+  grid-row: 2 / 3;
+  text-align: center;
+}

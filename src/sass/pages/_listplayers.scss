@@ -1,11 +1,7 @@
 .list-players {
-  grid-auto-rows: minmax(min-content, max-content);
-  row-gap: $h6-size;
+  @extend %list-main;
   &-item {
-    display: grid;
-    border-radius: 0.25rem;
-    border: 1px solid setcolor(blue, base);
-    @extend %box-shadow;
+    @extend %list-item;
     &-header {
       padding-left: $h6-size;
       line-height: $h4-size;
@@ -26,13 +22,10 @@
       }
     }
     &-name {
-      font-size: $h5-size;
-      grid-column: 1 / 2;
-      grid-row: 1 / 3;
+      @extend %list-name;
     }
     &-delete {
-      grid-row: 2 / 3;
-      text-align: center;
+      @extend %list-delete-text;
     }
   }
 }

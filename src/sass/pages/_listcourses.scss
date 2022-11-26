@@ -1,0 +1,21 @@
+.list-courses {
+  @extend %list-main;
+  &-item {
+    @extend %list-item;
+    grid-template-columns: 85% 15%;
+    align-items: center;
+    padding: $h6-size;
+    &-name {
+      @extend %list-name;
+    }
+    & svg {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      justify-self: center;
+      fill: setcolor(red, dark35);
+    }
+    &-delete {
+      @extend %list-delete-text;
+    }
+  }
+}

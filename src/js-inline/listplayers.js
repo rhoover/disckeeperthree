@@ -5,7 +5,7 @@ const listplayers = {
 
   init() {
 
-    // get both lists
+    // get player list
     async function getPlayers() {
       const playerFetch = await localforage.getItem('playerList');
       return playerFetch;
@@ -17,7 +17,6 @@ const listplayers = {
   },
 
   buildListForDOM(fetchedData) {
-    console.log(fetchedData);
     let playersList = document.querySelector('.list-players');
     let playerOutput = "";
 
@@ -43,7 +42,7 @@ const listplayers = {
 
   deletePlayer(fetchedData) {
 
-      //declare all the things
+    //declare all the things
     let playerList = document.querySelector('.list-players');
     let primaryItem = document.querySelector('[data-primary=true]');
     let ident = "";
@@ -56,8 +55,8 @@ const listplayers = {
     playerList.addEventListener('click', event => {
       let target = event.target.closest('.list-players-item');
       //which player was clicked
-      let ident = target.getAttribute('data-playerid');
-      //remove from DOM
+      ident = target.getAttribute('data-playerid');
+      //remove player from DOM
       target.remove();
 
       //remove from players array
@@ -65,7 +64,7 @@ const listplayers = {
         return player.playerID === ident;
       });
       fetchedData.splice(indexOfPlayer, 1);
-      
+
       //save modifued players array
       localforage.setItem('playerList', fetchedData);
 
