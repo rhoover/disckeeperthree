@@ -33,14 +33,15 @@ header {
   display: grid;
   grid-template-columns: 30% 70%;
   align-items: center;
-  justify-items: center;
   &-icon {
+    justify-self: right;
     height: 50px;
     width: 50px;
     filter: drop-shadow(0px 0px 2px white);
   }
   &-text {
     justify-self: start;
+    padding-left: $h6-size;
     font-size: $h6-size;
     line-height: calc($h6-size * $scale);;
     font-weight: 700;

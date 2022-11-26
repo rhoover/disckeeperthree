@@ -43,25 +43,34 @@ const listplayers = {
 
   deletePlayer(fetchedData) {
 
+      //declare all the things
     let playerList = document.querySelector('.list-players');
     let primaryItem = document.querySelector('[data-primary=true]');
     let ident = "";
+
+    //remove deleting elements from primary player
+    primaryItem.querySelector(('.delete-me')).remove();
+    primaryItem.querySelector(('.list-players-item-delete')).remove();
+
+    //clicking the trashcan
     playerList.addEventListener('click', event => {
       let target = event.target.closest('.list-players-item');
-      if (target != primaryItem) {
-        let ident = target.getAttribute('data-playerid');
-        target.remove();
-      };
+      //which player was clicked
+      let ident = target.getAttribute('data-playerid');
+      //remove from DOM
+      target.remove();
 
+      //remove from players array
       let indexOfPlayer = fetchedData.findIndex(player => {
         return player.playerID === ident;
       });
       fetchedData.splice(indexOfPlayer, 1);
+      
+      //save modifued players array
       localforage.setItem('playerList', fetchedData);
+
     }, false);
 
-    primaryItem.querySelector(('.delete-me')).remove();
-    primaryItem.querySelector(('.list-players-item-delete')).remove();
   }, //end deletePlayer
 };
 
