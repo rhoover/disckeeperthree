@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>{{title}}</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
@@ -42,6 +42,7 @@
     <meta property="twitter:title" content="DiscKeeper" />
     <meta property="twitter:description" content="Easy lightweight disc golf score keeping" />
     <meta property="twitter:image" content="https://disckeeper.io/img/disckeeper-logo.png" />
+    <link rel="preload" fetchpriority="high" as="image" href="/img/sprites/homepage-sprite.webp" type="image/webp">
     {% set critical %}
       {% include "../../css/critical/critical.css" %}
     {% endset %}
