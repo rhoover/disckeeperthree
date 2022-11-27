@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
 
@@ -7,8 +8,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy('src/img');
   eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy("manifest.webmanifest");
   eleventyConfig.addPassthroughCopy('favicon.ico');
   eleventyConfig.addPassthroughCopy('disckeeper-service-worker-min.js');
+  eleventyConfig.addPassthroughCopy('robots.txt');
 
   // add link shortcut to perfectly revisioned css file
   eleventyConfig.addNunjucksShortcode("cssLink", function() {
@@ -58,6 +61,20 @@ module.exports = function(eleventyConfig) {
       'dist/disckeeper-service-worker-data.json',
       JSON.stringify(filesToInclude)
     )
+  });
+
+  //minify all the htmls
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+    // Eleventy 1.0+: use this.inputPath and this.outputPath instead
+    if( this.outputPath && this.outputPath.endsWith(".html") ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        collapseWhitespace: true
+      });
+      return minified;
+    }
+
+    return content;
   });
   // initialize directories
   return {
