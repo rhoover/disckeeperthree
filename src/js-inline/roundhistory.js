@@ -13,7 +13,6 @@
           if (!data) {
             return
           } else {
-            console.log(data);
             data.sort((a,b) => {
               return new Date(b.date) - new Date(a.date);
             });
@@ -25,7 +24,6 @@
     buildRoundsList(roundsData) {
       let roundsList = document.querySelector('.round-history');
       let roundsOutput = "";
-      console.log(roundsData);
 
       roundsData.forEach(function(round) {
 

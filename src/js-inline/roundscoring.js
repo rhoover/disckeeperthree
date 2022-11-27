@@ -115,7 +115,6 @@
 
       function scores(incomingThrows, activePlayer) {
 
-        console.log('incoming throws:', incomingThrows, 'active player:', activePlayer, 'round Index:', roundIndex);
         
         if (roundIndex < course.holes.length -1) { // if not the last hole
 
@@ -127,7 +126,6 @@
 
           activePlayer.holes[roundIndex].overUnderRound += activePlayer.holes[roundIndex].overUnder;
 
-          console.log('scored hole:', activePlayer.holes[roundIndex]);
 
           // write new score to displayed scores
           playerScoreCurrent[activePlayerIndex].innerHTML = activePlayer.holes[roundIndex].overUnderRound;
@@ -151,7 +149,6 @@
           nextHoleIndex = roundIndex + 1;
           activePlayer.holes[nextHoleIndex].throwsRound = activePlayer.holes[roundIndex].throwsRound;
           activePlayer.holes[nextHoleIndex].overUnderRound = activePlayer.holes[roundIndex].overUnderRound;
-          console.log('seeded next hole:', activePlayer.holes, 'for player:', activePlayer);
 
           // deep copy necessary after modifying referenced object
           players[activePlayerIndex] = JSON.parse(JSON.stringify(activePlayer));
@@ -253,7 +250,6 @@
         player.finalScore = player.holes[roundIndex].overUnderRound;
         player.finalThrows = player.holes[roundIndex].throwsRound;
 
-        console.log(player);
         roundDataOutput += `
         <div class="roundscoring-modal-player">
         <p class="roundscoring-modal-player-name">${player.nameFirst}</p>

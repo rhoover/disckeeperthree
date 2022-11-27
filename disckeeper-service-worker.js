@@ -33,7 +33,6 @@ self.addEventListener('activate', event => {
   const seedCache = async () => {
     getServiceWorkerData()
       .then(files => {
-        console.log(files);
         caches.open(cacheName)
         .then(cache => {
           return cache.addAll(files);

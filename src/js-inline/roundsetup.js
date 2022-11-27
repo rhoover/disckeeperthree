@@ -100,24 +100,19 @@
 
           clicks += 1;
           clickedCourse = courseList[index];
-          // console.log('clicks count:', clicks);
-          // console.log('clicked course:', clickedCourse);
 
           if (clicks == 1) { // first click, there's nothing in array
             chosenCourse.splice(0, 0, clickedCourse);
-            // console.log('chosen course:', chosenCourse);
           } else { // subsequent clicks, must make tests so only one course is saved
             // find if the index of clicked course already exists
             let deleteCourse = chosenCourse.findIndex(course => {
                 return course.id === clickedCourse.id;
               });
-              // console.log('delete me index:', deleteCourse);
               // if it doesn't findIndex returns -1
               if (deleteCourse != -1) {
                 // if clicked course already exists in array, like clicking on it twice to un-chcek
                 if (clickedCourse.id == chosenCourse[deleteCourse].id) {
                   chosenCourse.splice(deleteCourse, 1);
-                  // console.log('cleaned array:', chosenCourse);
                 }
               } else {
                 chosenCourse.splice(0,0,clickedCourse);
