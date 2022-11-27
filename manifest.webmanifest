@@ -1,6 +1,7 @@
 {
   "name": "discKeeper",
   "short_name": "discKeeper",
+  "id": "/index.html",
   "icons": [
     {
       "src": "./img/dk-icns/android-chrome-192x192.png",
