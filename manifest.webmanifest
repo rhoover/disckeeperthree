@@ -11,10 +11,15 @@
       "src": "./img/dk-icns/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "./img/dk-icns/mstile-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#BEC2D5",
-  "theme_color": "#656D9A"
+  "theme_color": "#666D93"
 }
