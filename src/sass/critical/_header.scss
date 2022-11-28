@@ -11,6 +11,11 @@ header {
   background-image: linear-gradient(setcolor(blue, light15), setcolor(blue, dark15));
   border-bottom: 1px solid setcolor(blue, dark35);
   z-index: 55;
+  //http://jlzych.com/writing/ for the turbulence overlay technique
+  &::after {
+    @extend %turbulence;
+    height: 90%;
+  }
 }
 
 .back-button {

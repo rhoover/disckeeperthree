@@ -8,6 +8,11 @@
   background-image: linear-gradient(setcolor(blue, dark15), setcolor(blue, light15));
   border-right: 1px solid setcolor(blue, base);
   @extend %animate-helper;
+  &::after {
+    @extend %turbulence;
+    width: 90%;
+    opacity: 0.10;
+  }
   &-item {
     display: grid;
     grid-template-columns: 35px 1fr;

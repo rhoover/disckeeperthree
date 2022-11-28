@@ -53,10 +53,11 @@
     <!-- all other styles -->
     {% cssLink %}
     <!-- service worker initialize -->
-    <script>  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/disckeeper-service-worker-min.js');
-    });
-  };
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/disckeeper-service-worker-min.js');
+        });
+      };
     </script>
   </head>

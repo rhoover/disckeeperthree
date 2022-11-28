@@ -11,6 +11,9 @@
     font-size: $h6-size;
     line-height: $h1-size;
     @extend %box-shadow;
+    // &::after {
+    //   @extend %turbulence;
+    // }
     &-goscore {
       @extend %form-input-button;
       font-size: $p-size;
@@ -150,6 +153,10 @@
       }
     }
   }
+}
+
+button[rh-button="courses"]::after {
+  @extend %turbulence;
 }
 
 .selections {

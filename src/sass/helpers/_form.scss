@@ -18,10 +18,10 @@
     font-weight: 700;
   }
   &-input-button {
+    position: relative;
     font-size: $h4-size;
     line-height: calc($h4-size * $scale);
     background-image: linear-gradient(rgba(setcolor(blue, light65), 0.15), rgba(setcolor(blue, light55), 0.15));
-    // background-image: linear-gradient(setcolor(blue, light65), setcolor(blue, light55));
     border: 2px solid setcolor(green, dark45);
     border-radius: .65rem;
     color: setcolor(green, dark15);
