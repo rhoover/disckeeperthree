@@ -1,4 +1,6 @@
-.home-links-createcourse { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -2.5px; width: 320px; height: 90px; }
-.home-links-createplayer { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -97.5px; width: 320px; height: 90px; }
-.home-links-roundhistory { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -192.5px; width: 320px; height: 90px; }
-.home-links-scoring { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -327.5px -2.5px; width: 320px; height: 90px; }
+.home-links-createcourse { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -2.5px; width: 320px; height: 90px; transform:scale(1.14)}
+.home-links-createplayer { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -97.5px; width: 320px; height: 90px; transform:scale(1.14)}
+.home-links-roundhistory { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -2.5px -192.5px; width: 320px; height: 90px; transform:scale(1.14)}
+.home-links-scoring { background-image: url('/img/sprites/homepage-sprite.webp'); background-position: -327.5px -2.5px; width: 320px; height: 90px; transform:scale(1.14)}
+
+// added the transform by hand to get slightly larger link elements
