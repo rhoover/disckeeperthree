@@ -155,10 +155,6 @@
   }
 }
 
-button[rh-button="courses"]::after {
-  @extend %turbulence;
-}
-
 .selections {
   &-course {
     text-align: center;

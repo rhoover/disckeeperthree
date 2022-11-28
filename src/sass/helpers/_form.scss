@@ -32,5 +32,8 @@
       background: setcolor(blue, light85);
       border: 1px solid setcolor(red, base);
     }
+    &::after {
+      @extend %turbulence;
+    }
   }
 }
