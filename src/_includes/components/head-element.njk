@@ -42,7 +42,9 @@
     <meta property="twitter:title" content="DiscKeeper" />
     <meta property="twitter:description" content="Easy lightweight disc golf score keeping" />
     <meta property="twitter:image" content="https://disckeeper.io/img/disckeeper-logo.png" />
+    {% if page.url == '/' %}
     <link rel="preload" fetchpriority="high" as="image" href="/img/sprites/homepage-sprite.webp" type="image/webp">
+    {% endif %}
     {% set critical %}
       {% include "../../css/critical/critical.css" %}
     {% endset %}

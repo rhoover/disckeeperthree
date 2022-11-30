@@ -7,12 +7,12 @@
   {
     "label": "List of Courses",
     "slug": "courses",
-    "url": "/list-courses.html"
+    "url": "/listcourses.html"
   },
   {
     "label": "List of Players",
     "slug": "players",
-    "url": "/list-players.html"
+    "url": "/listplayers.html"
   },
 
   {

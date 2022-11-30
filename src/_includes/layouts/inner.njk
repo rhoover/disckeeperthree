@@ -5,27 +5,31 @@
     {% include "components/nav.njk" %}
     <main class="{{ page.fileSlug or 'home' }}" >
 
-      {% if page.fileSlug === 'createplayer' %}
+      {% if page.fileSlug === 'create-player' %}
         <h5 class="createplayer-header">Create A Player</h5>
       {% endif%}
       
-      {% if page.fileSlug === 'createcourse' %}
+      {% if page.fileSlug === 'create-course' %}
         <h5 class="createcourse-header">Create A Course</h5>
       {% endif%}
       
-      {% if page.fileSlug === 'adjustpars' %}
+      {% if page.fileSlug === 'adjust-pars' %}
         <h5 class="adjustpars-header">Set Pars</h5>
       {% endif%}
       
-      {% if page.fileSlug === 'roundsetup' %}
+      {% if page.fileSlug === 'round-setup' %}
         <h5 class="setup-header">Round SetUp</h5>
       {% endif%}
       
-      {% if page.fileSlug === 'roundscoring' %}
-        <p class="roundscoring-header"></p>
+      {% if page.fileSlug === 'list-courses' %}
+        <h5 class="list-courses-header">Courses</h5>
+      {% endif%}
+
+      {% if page.fileSlug === 'list-players' %}
+        <h5 class="list-players-header">Players</h5>
       {% endif%}
       
-      {% if page.fileSlug === 'roundhistory' %}
+      {% if page.fileSlug === 'round-history' %}
         <p class="roundhistory-header">Rounds History</p>
       {% endif%}
       
