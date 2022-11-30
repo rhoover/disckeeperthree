@@ -1,5 +1,6 @@
-.roundsetup {
-  grid-template-rows: repeat(6, max-content);
+.round-setup {
+  // grid-template-rows: repeat(6, max-content);
+  @extend %list-main;
   row-gap: $h5-size;
 }
 .setup {
@@ -11,9 +12,6 @@
     font-size: $h6-size;
     line-height: $h1-size;
     @extend %box-shadow;
-    // &::after {
-    //   @extend %turbulence;
-    // }
     &-goscore {
       @extend %form-input-button;
       font-size: $p-size;
@@ -158,12 +156,10 @@
 .selections {
   &-course {
     text-align: center;
-    margin-top: $h5-size;
     font-size: $h4-size;
   }
   &-players {
     text-align: center;
-    margin-top: $h5-size;
     font-size: $h5-size;
   }
 }
