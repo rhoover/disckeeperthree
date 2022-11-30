@@ -17,7 +17,7 @@ const listcourses = {
     },//end init
 
     buildListForDOM(fetchedData) {
-      let coursesList = document.querySelector('.list-courses');
+      let coursesList = document.querySelector('.list-courses-items');
       let coursesOutput = "";
 
       fetchedData.forEach(course => {

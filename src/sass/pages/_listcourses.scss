@@ -1,5 +1,8 @@
 .list-courses {
   @extend %list-main;
+  &-header {
+    @extend %inner-header;
+  }
   &-item {
     @extend %list-item;
     grid-template-columns: 85% 15%;

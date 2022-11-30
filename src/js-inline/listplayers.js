@@ -17,7 +17,7 @@ const listplayers = {
   },
 
   buildListForDOM(fetchedData) {
-    let playersList = document.querySelector('.list-players');
+    let playersList = document.querySelector('.list-players-items');
     let playerOutput = "";
 
     fetchedData.forEach(player => {

@@ -1,5 +1,8 @@
 .list-players {
   @extend %list-main;
+  &-header {
+    @extend %inner-header;
+  }
   &-item {
     @extend %list-item;
     &-header {
