@@ -1,5 +1,9 @@
+.create-player {
+  @extend %list-main;
+}
+
 .createplayer {
-  grid-template-rows: repeat(3, max-content);
+  // grid-template-rows: repeat(3, max-content);
   &-header {
     @extend %inner-header;
   }

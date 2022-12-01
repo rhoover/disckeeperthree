@@ -1,7 +1,5 @@
 .round-setup {
-  // grid-template-rows: repeat(6, max-content);
   @extend %list-main;
-  row-gap: $h5-size;
 }
 .setup {
   &-header {

@@ -1,6 +1,13 @@
 .round-history {
-  row-gap: $h5-size;
-  grid-auto-rows: minmax(min-content, max-content);
+  // row-gap: $h5-size;
+  // grid-auto-rows: minmax(min-content, max-content);
+  @extend %list-main;
+  &-header {
+    @extend %inner-header;
+  }
+  &-rounds {
+    @extend %list-main;
+  }
   &-stats {
     color: setcolor(blue, base);
     font-size: $h6-size;
