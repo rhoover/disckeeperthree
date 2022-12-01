@@ -1,5 +1,5 @@
 .list-players {
-  @extend %list-main;
+  row-gap: $h5-size;
   &-header {
     @extend %inner-header;
   }

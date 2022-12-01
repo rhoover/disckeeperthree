@@ -22,7 +22,7 @@
     },
 
     buildRoundsList(roundsData) {
-      let roundsList = document.querySelector('.round-history');
+      let roundsList = document.querySelector('.round-history-items');
       let roundsOutput = "";
 
       roundsData.forEach(function(round) {
