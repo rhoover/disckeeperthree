@@ -160,7 +160,7 @@
         grid-column: 2 / 3;
         justify-self: right;
         text-align: center;
-        width: 90%;
+        width: 95%;
         border: 1px solid setcolor(green, dark25);
         border-radius: 0.25rem;
         padding: 0.5rem 0px;
@@ -182,6 +182,7 @@
   &-players {
     display: grid;
     row-gap: $h5-size;
+    grid-auto-rows: fit-content(20vh);
     margin-bottom: $h3-size;
     &-player {
       display: grid;

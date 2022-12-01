@@ -10,6 +10,7 @@
   @extend %animate-helper;
   &::after {
     @extend %turbulence;
+    opacity: 0.2;
     width: 90%;
   }
   &-item {
