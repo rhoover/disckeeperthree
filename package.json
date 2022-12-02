@@ -12,6 +12,7 @@
     "home-page-sprite": "node src/.bin/home-page.js",
     "backmin": "terser src/js-inline/backbutton.js -o src/js-inline/mins/backbutton-min.js",
     "buttonmin": "terser src/js-inline/menubutton.js -o src/js-inline/mins/menubutton-min.js",
+    "navclosemin": "terser src/js-inline/navclose.js -o src/js-inline/mins/navclose-min.js",
     "foragemin": "terser src/js-inline/localForage-config.js -o src/js-inline/mins/localForage-config-min.js",
     "createplayermin": "terser src/js-inline/createplayer.js -o src/js-inline/mins/createplayer-min.js",
     "createcoursemin": "terser src/js-inline/createcourse.js -o src/js-inline/mins/createcourse-min.js",

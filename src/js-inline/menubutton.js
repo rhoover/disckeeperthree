@@ -5,7 +5,7 @@
     var menuButtonWrap = document.querySelector('.menu-toggle');
     var navMenu = document.querySelector('.nav');
 
-    menuButton.onclick=function(){
+    menuButton.onclick = function() {
       navMenu.classList.toggle('nav-open');
 
       menuButtonWrap.classList.toggle('opened');
@@ -15,6 +15,7 @@
       if (menuText.innerHTML === 'Menu') {
         menuText.innerHTML = 'Close'
       } else {
-        menuText.innerHTML = 'Menu'}
+        menuText.innerHTML = 'Menu'
       }
+    };
   })();

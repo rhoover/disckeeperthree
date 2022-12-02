@@ -14,6 +14,7 @@
   &-item {
     display: grid;
     grid-template-columns: 35px 1fr;
+    align-items: center;
     padding: 1.25rem 0px 1.25rem 1.25rem;
     border-top: 1px solid rgba(setcolor(green, dark45), 0.5);
     &-link {
@@ -44,6 +45,22 @@
     164px 0px 104px -6px rgba(0, 0, 0, 0.15)
   ;
   
+  }
+  &-close {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+    align-items: center;
+    padding: 1.25rem 0px 1.25rem 1.25rem;
+    border-top: 1px solid rgba(setcolor(green, dark45), 0.5);
+    &-svg {
+      width: 30px;
+      height: 30px;
+      grid-template-columns: 1 / 2;
+    }
+    &-text {
+      grid-template-columns: 2 / 3;
+      color: setcolor(red, base);
+    }
   }
 
 }

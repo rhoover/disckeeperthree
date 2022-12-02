@@ -1,4 +1,8 @@
 <nav class="nav">
+  <div class="nav-close">
+    <svg xmlns="http://www.w3.org/2000/svg" class="nav-close-svg" viewBox="0 0 100 100" version="1.0"><path d="m6.39 6.42 87.19 87.19" style="fill:none;fill-rule:evenodd;stroke:#720024;stroke-width:18.05195999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/><path d="M6.39 93.61 93.83 6.42" style="fill:none;fill-rule:evenodd;stroke:#720024;stroke-width:17.80202103;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/></svg>
+    <p class="nav-close-text">Close Menu</p>
+  </div>
   {% for item in nav %}
   <div class= "nav-item">
     {% include ["nav-svg/", item.slug, ".svg"] | join %}
