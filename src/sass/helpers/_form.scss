@@ -21,8 +21,9 @@
     position: relative;
     font-size: $h4-size;
     line-height: calc($h4-size * $scale);
-    background: 
-      repeating-conic-gradient(rgba(setcolor(white, base), 0.05) 0.000045%, rgba(setcolor(black, base), 0.05) 0.0005%),
+    background:
+      // cribbed: https://css-tricks.com/making-static-noise-from-a-weird-css-gradient-bug/
+      repeating-conic-gradient(rgba(setcolor(white, base), 0.05) 0.000045%, rgba(setcolor(black, base), 0.05) 0.0005%) 60% 60%/3000px 3000px,
       linear-gradient(rgba(setcolor(blue, light45), 0.35), rgba(setcolor(blue, light15), 0.45));
       background-blend-mode: multiply normal;
     border: 2px solid setcolor(green, dark45);

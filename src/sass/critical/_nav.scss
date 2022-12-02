@@ -6,7 +6,8 @@
   left: -50%;
   min-height: calc(100vh - 4rem);
   background:
-    repeating-conic-gradient(rgba(setcolor(white, base), 0.05) 0.000045%, rgba(setcolor(black, base), 0.05) 0.0005%),
+  // cribbed: https://css-tricks.com/making-static-noise-from-a-weird-css-gradient-bug/
+  repeating-conic-gradient(rgba(setcolor(white, base), 0.05) 0.000045%, rgba(setcolor(black, base), 0.05) 0.0005%) 60% 60%/3000px 3000px,
     linear-gradient(setcolor(blue, dark15), setcolor(blue, light15));
   border-right: 1px solid setcolor(blue, base);
   @extend %animate-helper;
