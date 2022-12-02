@@ -11,7 +11,6 @@
       getRounds()
         .then(data => {
           if (!data) {
-            // return
             roundhistory.noRounds(data);
           } else {
             data.sort((a,b) => {
@@ -31,9 +30,7 @@
           <a href="roundsetup.html" class="round-history-warning-link">Go ahead and start one!  ➤</a>
         `;
         roundsWarning.innerHTML += warningOutput;
-      } else {
-        roundhistory.buildRoundsList(roundsData);
-      }
+      };
     },
 
     buildRoundsList(roundsData) {

@@ -10,9 +10,34 @@
       };
       getRounds()
         .then(data => {
-          statistics.selectBox(data);
+          if (!data) {
+            statistics.noRounds(data);
+          } else {
+            statistics.selectBox(data);
+          }
         });
     }, // end init
+
+    noRounds(roundsData) {
+      if (roundsData == null) {
+        let roundsWarning = document.querySelector('.statistics');
+        let selectBox = document.getElementById('courses');
+        let holeChart = document.getElementById('holeData');
+        let roundChart = document.getElementById('roundData');
+
+        selectBox.remove();
+        holeChart.remove();
+        roundChart.remove();
+
+        let warningOutput = "";
+
+        warningOutput += `
+          <p class="statistics-warning">You don't have any rounds saved yet,</p>
+          <a href="roundsetup.html" class="statistics-warning-link">Go ahead and start one!  ➤</a>
+        `;
+        roundsWarning.innerHTML += warningOutput;
+      }
+    },
 
     selectBox(incomingRoundsData) {
 

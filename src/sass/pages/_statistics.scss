@@ -1,3 +1,16 @@
+.statistics-warning {
+  font-size: $h6-size;
+  text-align: center;
+  margin-bottom: $h5-size;
+  &-link {
+    text-decoration: none;
+    @extend %form-input-button;
+    font-size: $h6-size;
+    text-align: center;
+  }
+}
+
+
 #courses {
   border: 1px solid setcolor(blue, base);
   border-radius: 0.25em;
