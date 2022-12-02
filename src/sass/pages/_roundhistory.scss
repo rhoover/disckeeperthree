@@ -6,6 +6,16 @@
   &-items {
     @extend %list-main;
   }
+  &-warning{
+    font-size: $h6-size;
+    text-align: center;
+    &-link {
+      text-decoration: none;
+      @extend %form-input-button;
+      font-size: $h6-size;
+      text-align: center;
+    }
+  }
   &-stats {
     max-height: 5rem;
     color: setcolor(blue, base);

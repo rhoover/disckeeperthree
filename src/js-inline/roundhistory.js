@@ -11,7 +11,8 @@
       getRounds()
         .then(data => {
           if (!data) {
-            return
+            // return
+            roundhistory.noRounds(data);
           } else {
             data.sort((a,b) => {
               return new Date(b.date) - new Date(a.date);
@@ -19,6 +20,20 @@
             roundhistory.buildRoundsList(data);
           }
         });
+    },
+
+    noRounds(roundsData) {
+      if (roundsData == null) {
+        let roundsWarning = document.querySelector('.round-history-items');
+        let warningOutput = "";
+        warningOutput += `
+          <p class="round-history-warning">You don't have any rounds saved yet,</p>
+          <a href="roundsetup.html" class="round-history-warning-link">Go ahead and start one!  ➤</a>
+        `;
+        roundsWarning.innerHTML += warningOutput;
+      } else {
+        roundhistory.buildRoundsList(roundsData);
+      }
     },
 
     buildRoundsList(roundsData) {
