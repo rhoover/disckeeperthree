@@ -23,8 +23,14 @@
 
     noRounds(roundsData) {
       if (roundsData == null) {
-        let roundsWarning = document.querySelector('.round-history-items');
+        let roundsWarning = document.querySelector('.round-history');
+        let statsEncourage = document.querySelector('.round-history-stats');
+        let roundItems = document.querySelector('.round-history-items')
         let warningOutput = "";
+
+        statsEncourage.remove();
+        roundItems.remove();
+
         warningOutput += `
           <p class="round-history-warning">You don't have any rounds saved yet,</p>
           <a href="roundsetup.html" class="round-history-warning-link">Go ahead and start one!  ➤</a>
