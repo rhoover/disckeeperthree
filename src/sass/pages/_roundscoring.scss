@@ -1,6 +1,5 @@
-.roundscoring {
-  top: 5rem;
-  grid-template-rows: max-content 7vh 35vh  max-content max-content;
+.round-scoring {
+  @extend %list-main;
   row-gap: $h5-size;
   &-modal {
     @extend %modal;
@@ -74,18 +73,8 @@
       }
     }
   }
-  &-header {
-    grid-column: 1 / 4;
-    width: 100%;
-    text-align: center;
-    align-self: center;
-    font-weight: 700;
-    font-size: $h5-size;
-    line-height: $h3-size;
-    background-image: linear-gradient(setcolor(blue, light75), setcolor(blue, light55));
-    border-bottom: 1px solid setcolor(blue, base);
-  }
   &-numpad {
+    height: 30vh;
     display: flex;
     flex-flow: row wrap;
     flex-direction: row-reverse;

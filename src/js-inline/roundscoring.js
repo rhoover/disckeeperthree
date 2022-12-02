@@ -12,14 +12,13 @@
       getChosenCourse()
         .then(data => {
           //send down course data
-          // roundscoring.buildHeader(data[0]);
           roundscoring.seedMeta(data[0]);
 
           // send down player data
           roundscoring.seedConfirm(data[1]);
           roundscoring.seedPlayerScores(data[1]);
 
-          let padNumbers = document.querySelectorAll('.roundscoring-numpad-button');
+          let padNumbers = document.querySelectorAll('.round-scoring-numpad-button');
           roundscoring.scoring(padNumbers, data[0], data[1]);
         });
 
@@ -30,10 +29,6 @@
         }, 2000);
 
     },
-
-    // buildHeader(incomingCourse) {
-    //   document.querySelector('.roundscoring-header').innerHTML = incomingCourse.name;
-    // },
 
     seedMeta(incomingCourse) {
       document.querySelector('[rh-holeNumber]').innerHTML = incomingCourse.holes[0].holeNumber;
@@ -48,14 +43,14 @@
     },
 
     seedPlayerScores(incomingPlayers) {
-      let scoringSection = document.querySelector('.roundscoring-players');
+      let scoringSection = document.querySelector('.round-scoring-players');
       let playersOutput = "";
 
       incomingPlayers.forEach(function(player, index) {
         playersOutput += `
-        <div class="roundscoring-players-player">
-        <p class="roundscoring-players-name" rh-player-name">${player.nameFirst}</p>
-        <p class="roundscoring-players-score" rh-player-score></p>
+        <div class="round-scoring-players-player">
+        <p class="round-scoring-players-name" rh-player-name">${player.nameFirst}</p>
+        <p class="round-scoring-players-score" rh-player-score></p>
         </div>
         `;
       });
@@ -133,16 +128,16 @@
           // color co-ordinate displayed overall scores
           // over par:
           if (activePlayer.holes[roundIndex].overUnderRound > 0) {
-            playerScoreCurrent[activePlayerIndex].classList.add('roundscoring-players-score-over');
-            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-under');  
+            playerScoreCurrent[activePlayerIndex].classList.add('round-scoring-players-score-over');
+            playerScoreCurrent[activePlayerIndex].classList.remove('round-scoring-players-score-under');  
           // par: 
           } else if (activePlayer.holes[roundIndex].overUnderRound == 0) {
-            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-over');
-            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-under');
+            playerScoreCurrent[activePlayerIndex].classList.remove('round-scoring-players-score-over');
+            playerScoreCurrent[activePlayerIndex].classList.remove('round-scoring-players-score-under');
             // under par:  
           } else {
-            playerScoreCurrent[activePlayerIndex].classList.add('roundscoring-players-score-under');
-            playerScoreCurrent[activePlayerIndex].classList.remove('roundscoring-players-score-over');
+            playerScoreCurrent[activePlayerIndex].classList.add('round-scoring-players-score-under');
+            playerScoreCurrent[activePlayerIndex].classList.remove('round-scoring-players-score-over');
           };
 
           //seed next hole for active player
@@ -220,8 +215,8 @@
 
             // bring the modal down
             setTimeout(() => {
-              modalSelect = document.querySelector('.roundscoring-modal');
-              modalSelect.classList.toggle('roundscoring-modal-open');
+              modalSelect = document.querySelector('.round-scoring-modal');
+              modalSelect.classList.toggle('round-scoring-modal-open');
             }, 1000);
           }
         }; // end if-else for all holes, working and last
@@ -243,18 +238,18 @@
     seedFinishedModal(course, players, roundIndex) {
       let insertRoundDataHere = document.querySelector('[rh-rounddata]');
       let roundDataOutput = `
-      <h5 class="roundscoring-modal-round-header">${course.name}</h5>
-      <p class="roundscoring-modal-round-date">${course.roundDate}</p>`;
+      <h5 class="round-scoring-modal-round-header">${course.name}</h5>
+      <p class="round-scoring-modal-round-date">${course.roundDate}</p>`;
 
       players.forEach(function(player) {
         player.finalScore = player.holes[roundIndex].overUnderRound;
         player.finalThrows = player.holes[roundIndex].throwsRound;
 
         roundDataOutput += `
-        <div class="roundscoring-modal-player">
-        <p class="roundscoring-modal-player-name">${player.nameFirst}</p>
-        <p class="roundscoring-modal-player-score">${player.holes[roundIndex].overUnderRound}</p>
-        <p class="roundscoring-modal-player-throws">From ${player.holes[roundIndex].throwsRound} Throws</p>
+        <div class="round-scoring-modal-player">
+        <p class="round-scoring-modal-player-name">${player.nameFirst}</p>
+        <p class="round-scoring-modal-player-score">${player.holes[roundIndex].overUnderRound}</p>
+        <p class="round-scoring-modal-player-throws">From ${player.holes[roundIndex].throwsRound} Throws</p>
         </div>
         `;
       });
@@ -268,8 +263,8 @@
       let savedRound;
       let savedRoundsArray;
 
-      closeButton = document.querySelector('.roundscoring-modal-footer-close-icon');
-      saveButton = document.querySelector('.roundscoring-modal-footer-save-icon');
+      closeButton = document.querySelector('.round-scoring-modal-footer-close-icon');
+      saveButton = document.querySelector('.round-scoring-modal-footer-save-icon');
 
       savedRound = {
         players: players,
@@ -283,7 +278,7 @@
 
       // footer actions
       closeButton.addEventListener('click', event => {
-        document.querySelector('.roundscoring-modal').classList.remove('roundscoring-modal-open');
+        document.querySelector('.round-scoring-modal').classList.remove('round-scoring-modal-open');
       });
       saveButton.addEventListener('click', event => {
 
@@ -301,7 +296,7 @@
             roundscoring.storeage(savedRoundsArray);
           }
         }); // end .then
-        document.querySelector('.roundscoring-modal').classList.remove('roundscoring-modal-open');
+        document.querySelector('.round-scoring-modal').classList.remove('round-scoring-modal-open');
       }); // end save button
     },
 
