@@ -70,7 +70,7 @@
       let activePlayerName;
       let playerScoreCurrent;
       let nextHoleIndex;
-      let modalSelect;
+      let finishedModal;
 
       // throws display box
       throwsBox = document.querySelector('[rh-throws]');
@@ -215,9 +215,9 @@
 
             // bring the modal down
             setTimeout(() => {
-              modalSelect = document.querySelector('.round-scoring-modal');
-              modalSelect.classList.toggle('round-scoring-modal-open');
-            }, 1000);
+              finishedModal = document.querySelector('.round-scoring-modal');
+              finishedModal.classList.toggle('round-scoring-modal-open');
+            }, 300);
           }
         }; // end if-else for all holes, working and last
         // start all over again
