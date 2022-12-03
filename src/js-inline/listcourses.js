@@ -55,11 +55,11 @@ const listcourses = {
 
         //remove from courses array
         let indexOfCourse = fetchedData.findIndex(course => {
-          return course.coujrseID === ident;
+          return course.courseID === ident;
         });
         fetchedData.splice(indexOfCourse, 1);
 
-        //save modifued players array
+        //save modifued courses array
         localforage.setItem('courseList', fetchedData);
       });
     }// end deleteCourse
