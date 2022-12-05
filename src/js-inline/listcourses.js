@@ -8,19 +8,28 @@ const listcourses = {
     // get course list
     async function getCourses() {
       const coursesFetch = await localforage.getItem('courseList');
-      return coursesFetch;
+      const roundsFetch = await localforage.getItem('savedRounds');
+      return [coursesFetch, roundsFetch];
     };
     getCourses()
       .then(fetchedData => {
-        listcourses.buildListForDOM(fetchedData);
+        listcourses.buildListForDOM(fetchedData[0], fetchedData[1]);
       });
+
+    // fix to stop modals displaying on page load
+    let modals = document.querySelectorAll('[style="visibility:hidden;"]');
+      setTimeout(() => {
+        modals.forEach(function(modal) {
+          modal.removeAttribute('style');
+        });
+      }, 2000);
     },//end init
 
-    buildListForDOM(fetchedData) {
+    buildListForDOM(fetchedCourses, fetchedRounds) {
       let coursesList = document.querySelector('.list-courses-items');
       let coursesOutput = "";
 
-      fetchedData.forEach(course => {
+      fetchedCourses.forEach(course => {
         
         coursesOutput += `
           <div class="list-courses-item" data-courseID="${course.courseID}">
@@ -35,32 +44,42 @@ const listcourses = {
 
       coursesList.innerHTML = coursesOutput;
 
-      listcourses.deleteCourse(fetchedData);
+      listcourses.deleteCourse(fetchedCourses, fetchedRounds);
     
     }, //end buildListForDOM
 
-    deleteCourse(fetchedData) {
-
-      //decleare all the things
+    deleteCourse(fetchedCourses, fetchedRounds) {
+      console.log(fetchedRounds);
+      //declare all the things
       let courseList = document.querySelector('.list-courses');
-      let ident = "";
+      let clickedCourseID = "";
 
       //clicking the trashcan
       courseList.addEventListener('click', event => {
         let target = event.target.closest('.list-courses-item');
         //which course was clicked
-        ident = target.getAttribute('data-courseid');
-        //remove course from DOM
-        target.remove();
+        clickedCourseID = target.getAttribute('data-courseid');
 
-        //remove from courses array
-        let indexOfCourse = fetchedData.findIndex(course => {
-          return course.courseID === ident;
-        });
-        fetchedData.splice(indexOfCourse, 1);
-
-        //save modifued courses array
-        localforage.setItem('courseList', fetchedData);
+        //are there saved rounds?
+        if (fetchedRounds == null) { //if there aren't
+          //remove course from DOM
+          target.remove();
+  
+          //remove from courses array
+          let indexOfCourse = fetchedCourses.findIndex(course => {
+            return course.courseID === clickedCourseID;
+          });
+          fetchedCourses.splice(indexOfCourse, 1);
+  
+          //save modifued courses array
+          localforage.setItem('courseList', fetchedCourses);
+          
+        } else { //if there are
+          document.querySelector('.list-courses-modal').classList.add('list-courses-modal-open');
+          let clickedCourseObj = fetchedCourses.find(x => x.courseID === clickedCourseID);
+          let insertCourseName = document.querySelector('.list-courses-modal-warning-name');
+          insertCourseName.innerHTML = clickedCourseObj.name;
+        }
       });
     }// end deleteCourse
 

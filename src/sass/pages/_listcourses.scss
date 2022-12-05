@@ -24,4 +24,33 @@
       @extend %list-delete-text;
     }
   }
+  &-modal {
+    @extend %modal;
+    grid-template-rows: 12% 20% 15% 15%;
+    row-gap: $h5-size;
+    text-align: center;
+    &-header {
+      @extend %modal-header;
+      font-size: $h5-size;
+    }
+    &-warning {
+      width: 85%;
+      justify-self: center;
+      align-self: center;
+      font-size: $h6-size;
+      line-height: $h5-size;
+      &-name {
+        font-weight: 700;
+      }
+    }
+    &-choices {
+      @extend %form-input-button;
+      width: 85%;
+      justify-self: center;
+      font-size: $p-size;
+    }
+    &-open {
+      @extend %modal-open;
+    }
+  }
 }

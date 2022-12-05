@@ -24,7 +24,7 @@
           modals.forEach(function(modal) {
             modal.removeAttribute('style');
           });
-        }, 2000)
+        }, 2000);
     },
 
     dataChecks(playerList, courseList) {
