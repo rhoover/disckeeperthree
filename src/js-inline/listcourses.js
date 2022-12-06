@@ -44,44 +44,71 @@ const listcourses = {
 
       coursesList.innerHTML = coursesOutput;
 
-      listcourses.deleteCourse(fetchedCourses, fetchedRounds);
+      listcourses.roundConflict(fetchedCourses, fetchedRounds);
     
     }, //end buildListForDOM
 
-    deleteCourse(fetchedCourses, fetchedRounds) {
-      console.log(fetchedRounds);
+    roundConflict(fetchedCourses, fetchedRounds) {
+
       //declare all the things
       let courseList = document.querySelector('.list-courses');
       let clickedCourseID = "";
+      let clickedCourseObj = {};
 
       //clicking the trashcan
       courseList.addEventListener('click', event => {
         let target = event.target.closest('.list-courses-item');
+
         //which course was clicked
         clickedCourseID = target.getAttribute('data-courseid');
 
         //are there saved rounds?
-        if (fetchedRounds == null) { //if there aren't
-          //remove course from DOM
-          target.remove();
-  
-          //remove from courses array
-          let indexOfCourse = fetchedCourses.findIndex(course => {
-            return course.courseID === clickedCourseID;
-          });
-          fetchedCourses.splice(indexOfCourse, 1);
-  
-          //save modifued courses array
-          localforage.setItem('courseList', fetchedCourses);
+        if (fetchedRounds == null) { // there aren't as the response form the db was null
+
+          // send along the info to remove the clicked course
+          listcourses.deleteCourseOnly(target, clickedCourseID, fetchedCourses);
           
-        } else { //if there are
-          document.querySelector('.list-courses-modal').classList.add('list-courses-modal-open');
-          let clickedCourseObj = fetchedCourses.find(x => x.courseID === clickedCourseID);
-          let insertCourseName = document.querySelector('.list-courses-modal-warning-name');
-          insertCourseName.innerHTML = clickedCourseObj.name;
-        }
+        } else { // there might a matching saved round as savedRounds came back positive from the db
+
+          // does the clicked course actually exist in the saved rounds array? check and see
+          clickedCourseObj = fetchedCourses.find(x => x.courseID === clickedCourseID);
+
+          //if at least one does match, the obj will not be empty
+          if(Object.keys(clickedCourseObj ).length > 0) {
+            let insertCourseName = document.querySelector('.list-courses-modal-warning-name');
+            insertCourseName.innerHTML = clickedCourseObj.name;
+
+            // make the fully dressed modal appear
+            document.querySelector('.list-courses-modal').classList.add('list-courses-modal-open');
+  
+          // having checked, we discovered there were no rounds matching the clicked round
+          } else {
+
+            // send along the info to remove the clicked course
+            listcourses.deleteCourseOnly(target, clickedCourseID, fetchedCourses);
+
+          };
+
+        };
       });
-    }// end deleteCourse
+    }, // end roundConflict
+
+    deleteCourseOnly(target, clickedCourseID, fetchedCourses) {
+
+      //remove course from DOM
+      target.remove();
+  
+      //remove course from courses array
+      let indexOfCourse = fetchedCourses.findIndex(course => {
+        return course.courseID === clickedCourseID;
+      });
+      fetchedCourses.splice(indexOfCourse, 1);
+
+      //save modifued courses array
+      localforage.setItem('courseList', fetchedCourses);
+    },
+
+    deleteCourseAndRounds() {}
 
 }
 
