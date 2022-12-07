@@ -98,7 +98,7 @@ const listcourses = {
         };
       };
 
-    courseList.addEventListener('click', clickTrashCan, false);
+      courseList.addEventListener('click', clickTrashCan, false);
 
     }, // end clickTrashCan
 
@@ -107,11 +107,10 @@ const listcourses = {
       let deleteBoth = document.querySelector('[data-both]');
       let deleteCourse = document.querySelector('[data-courseonly]');
 
-
       // deleteBoth.addEventListener('click', deleteBothFunction, false);
       // deleteCourse.addEventListener('click', deleteCourseFunction, false);
 
-    },
+    }, // end clickModalChoice
 
     deleteCourseOnly(target, clickedCourseID, fetchedCourses) {
 
