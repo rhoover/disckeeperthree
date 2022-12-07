@@ -47,6 +47,7 @@
       @extend %form-input-button;
       width: 85%;
       justify-self: center;
+      line-height: $h6-size;
       font-size: $p-size;
     }
     &-open {

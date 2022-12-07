@@ -44,20 +44,23 @@ const listcourses = {
 
       coursesList.innerHTML = coursesOutput;
 
-      listcourses.roundConflict(fetchedCourses, fetchedRounds);
+      listcourses.clickTrashCan(fetchedCourses, fetchedRounds);
     
     }, //end buildListForDOM
 
-    roundConflict(fetchedCourses, fetchedRounds) {
+    clickTrashCan(fetchedCourses, fetchedRounds) {
 
       //declare all the things
       let courseList = document.querySelector('.list-courses');
+      let coursesModal = document.querySelector('.list-courses-modal');
       let clickedCourseID = "";
       let clickedCourseObj = {};
+      let target;
+      let insertCourseName;
 
-      //clicking the trashcan
-      courseList.addEventListener('click', event => {
-        let target = event.target.closest('.list-courses-item');
+      //clicking the trashcan listener function
+      function clickTrashCan(event) {
+        target = event.target.closest('.list-courses-item');
 
         //which course was clicked
         clickedCourseID = target.getAttribute('data-courseid');
@@ -73,25 +76,42 @@ const listcourses = {
           // does the clicked course actually exist in the saved rounds array? check and see
           clickedCourseObj = fetchedCourses.find(x => x.courseID === clickedCourseID);
 
-          //if at least one does match, the obj will not be empty
+          //if at least one does match, the clickedCourseObj will not be empty
           if(Object.keys(clickedCourseObj ).length > 0) {
-            let insertCourseName = document.querySelector('.list-courses-modal-warning-name');
+
+            // insert info into the DOM
+            insertCourseName = document.querySelector('.list-courses-modal-warning-name');
             insertCourseName.innerHTML = clickedCourseObj.name;
 
             // make the fully dressed modal appear
-            document.querySelector('.list-courses-modal').classList.add('list-courses-modal-open');
+            coursesModal.classList.add('list-courses-modal-open');
+
+            listcourses.clickModalChoice(target, coursesModal, clickedCourseObj, clickedCourseID, fetchedCourses);
   
-          // having checked, we discovered there were no rounds matching the clicked round
+          // having checked, we discovered there were no rounds matching the clicked course
           } else {
 
             // send along the info to remove the clicked course
             listcourses.deleteCourseOnly(target, clickedCourseID, fetchedCourses);
 
           };
-
         };
-      });
-    }, // end roundConflict
+      };
+
+    courseList.addEventListener('click', clickTrashCan, false);
+
+    }, // end clickTrashCan
+
+    clickModalChoice(target, coursesModal, clickedCourseObj, clickedCourseID, fetchedCourses, ) {
+      console.log(target, coursesModal, clickedCourseObj, clickedCourseID, fetchedCourses);
+      let deleteBoth = document.querySelector('[data-both]');
+      let deleteCourse = document.querySelector('[data-courseonly]');
+
+
+      // deleteBoth.addEventListener('click', deleteBothFunction, false);
+      // deleteCourse.addEventListener('click', deleteCourseFunction, false);
+
+    },
 
     deleteCourseOnly(target, clickedCourseID, fetchedCourses) {
 
@@ -108,7 +128,9 @@ const listcourses = {
       localforage.setItem('courseList', fetchedCourses);
     },
 
-    deleteCourseAndRounds() {}
+    deleteCourseAndRounds(target, clickedCourseID, fetchedCourses) {
+
+    }
 
 }
 
