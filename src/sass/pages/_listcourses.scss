@@ -49,6 +49,7 @@
       justify-self: center;
       line-height: $h6-size;
       font-size: $p-size;
+      color: setcolor(green, dark35);
     }
     &-open {
       @extend %modal-open;
