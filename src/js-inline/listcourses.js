@@ -147,11 +147,14 @@ const listcourses = {
 
   deleteRounds(clickedCourseID, fetchedRounds) {
 
+    //find which rounds are to nuked
     fetchedRounds.forEach((round, index) => {
       if (round.courseID === clickedCourseID) {
         fetchedCourses.splice(index, 1);
       };
     });
+
+    // save updated rounds array back to idb
     localforage.setItem('savedRounds', fetchedRounds);
 
     if (document.querySelector('.list-courses-modal-open')) {
