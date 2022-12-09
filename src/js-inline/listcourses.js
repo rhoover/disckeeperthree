@@ -116,7 +116,7 @@ const listcourses = {
       if (buttonChoice == 'both') {
         listcourses.deleteCourse(targetDOM, clickedCourseID, fetchedCourses);
         listcourses.deleteRounds(clickedCourseID, fetchedRounds);
-      } else {
+      } else { // i.e. has clicked on delete just the course
         listcourses.deleteCourse(targetDOM, clickedCourseID, fetchedCourses);
       }
     };
