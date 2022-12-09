@@ -45,19 +45,26 @@
       let selectedCourseName = "";
       let selectElement = document.querySelector('#courses');
       let selectOutput = "";
+
       //remove duplicate courses merely for selectbox purposes
       let uniqueArray = [...new Map(incomingRoundsData.map(v => [v.courseID, v])).values()];
+
       //build options
       uniqueArray.forEach(function(round) {
         selectOutput += `<option value=${round.courseID}>${round.course}</option>`;
       });
       selectElement.innerHTML += selectOutput;
 
-      selectElement.addEventListener('change', function(event) {
+      function selectBoxListener(event) {
+        event.stopPropagation();
+
         let option = event.target.options[event.target.selectedIndex];
         selectedCourseName = option.text;
+
         statistics.buildCourseData(incomingRoundsData, selectedCourseName);
-      });
+      };
+
+      selectElement.addEventListener('change', selectBoxListener); // note is change not clicked
 
     },// end selectBox
 
@@ -145,7 +152,7 @@
     }, // end buildThrowsChartData
 
     buildRoundsChartData(courseData, selectedCourseName) {
-      
+
       //declaring all the things
       let roundLength = courseData.length;
       let roundDate = [];
