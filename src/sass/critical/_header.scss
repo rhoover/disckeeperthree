@@ -48,6 +48,7 @@ header {
     font-size: $h6-size;
     line-height: calc($h6-size * $scale);;
     font-weight: 700;
+    text-decoration: none;
     color: setcolor(white, base);
     background-color: transparent;
   }
