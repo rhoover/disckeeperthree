@@ -150,7 +150,7 @@ const listcourses = {
     //find which rounds are to nuked
     fetchedRounds.forEach((round, index) => {
       if (round.courseID === clickedCourseID) {
-        fetchedCourses.splice(index, 1);
+        fetchedRounds.splice(index, 1);
       };
     });
 
