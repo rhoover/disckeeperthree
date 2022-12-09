@@ -8,9 +8,9 @@
   }
   &-item {
     @extend %list-item;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 80% 20%;
     align-items: center;
-    padding: $h6-size;
+    padding: $p-size;
     &-name {
       @extend %list-name;
     }
@@ -22,11 +22,12 @@
     }
     &-delete {
       @extend %list-delete-text;
+      font-weight: 700;
     }
   }
   &-modal {
     @extend %modal;
-    grid-template-rows: 12% 20% 15% 15%;
+    grid-template-rows: 12% 20% max-content max-content;
     row-gap: $h5-size;
     text-align: center;
     &-header {
@@ -46,8 +47,9 @@
     &-choices {
       @extend %form-input-button;
       width: 85%;
+      padding: $p-size;
       justify-self: center;
-      line-height: $h6-size;
+      line-height: calc($h5-size * $scale);
       font-size: $p-size;
       color: setcolor(green, dark35);
     }

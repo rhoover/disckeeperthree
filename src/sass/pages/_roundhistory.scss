@@ -17,14 +17,12 @@
     }
   }
   &-stats {
-    max-height: 5rem;
-    color: setcolor(blue, base);
+    @extend %form-input-button;
+    line-height: calc($h6-size * $scale);
     font-size: $h6-size;
     text-decoration: none;
     text-align: center;
     padding: $p-size;
-    border: 1px solid setcolor(blue, dark25);
-    border-radius: 0.25em;
     @extend %box-shadow;
   }
   &-round {
@@ -41,7 +39,7 @@
       & span {
         float: right;
         font-size: $p-size;
-        font-weight: 400;
+        font-weight: 700;
       }
     }
     &-data {
