@@ -145,7 +145,7 @@
     }, // end buildThrowsChartData
 
     buildRoundsChartData(courseData, selectedCourseName) {
-      console.table(courseData);
+      
       //declaring all the things
       let roundLength = courseData.length;
       let roundDate = [];
