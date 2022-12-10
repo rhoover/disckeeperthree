@@ -58,41 +58,31 @@
     },
 
     scoring(numberPad, course, players) {
-      // all declarations
-      let throwsBox;
-      let clear;
-      let submitButton;      
-      let activePlayerIndex;
-      let roundIndex;
+
+      // declare all the things
+
+      // throws box display
+      let throwsBox = document.querySelector('[rh-throws]');
+      //clear button on numpad
+      let clear = document.querySelector('[rh-clear]');
+      // submit throws for hole
+      let submitButton = document.querySelector('[rh-submit]');     
+      // initialize indices for moving through players and holes 
+      let activePlayerIndex = 0;
+      let roundIndex = 0;
+      // because
       let activePlayer;
-      let holeNumber;
-      let holePar;
-      let activePlayerName;
-      let playerScoreCurrent;
+      // elements, meta
+      let holeNumber = document.querySelector('[rh-holenumber]');
+      let holePar = document.querySelector('[rh-parnumber]');
+      // elements, scores
+      let activePlayerName = document.querySelectorAll('[rh-playerConfirmname]');
+      let playerScoreCurrent = document.querySelectorAll('[rh-player-score]');
       let nextHoleIndex;
+      // finishing up
       let finishedModal;
 
-      // throws display box
-      throwsBox = document.querySelector('[rh-throws]');
       throwsBox.innerHTML = "";
-
-      //clear button on numpad
-      clear = document.querySelector('[rh-clear]');
-
-      // submit throws for hole
-      submitButton = document.querySelector('[rh-submit]');
-
-      // elements, meta
-      holeNumber = document.querySelector('[rh-holenumber]');
-      holePar = document.querySelector('[rh-parnumber]');
-
-      // elements, scores
-      activePlayerName = document.querySelectorAll('[rh-playerConfirmname]');
-      playerScoreCurrent = document.querySelectorAll('[rh-player-score]');
-
-      // initialize indices for moving through players and holes
-      activePlayerIndex = 0;
-      roundIndex = 0;
 
       // punching the pad and showing it in the throws box
       numberPad.forEach(number => {
@@ -177,7 +167,6 @@
 
           activePlayer.holes[roundIndex].throws = incomingThrows;
 
-          // activePlayer.holes[roundIndex].throwsRound = activePlayer.holes[roundIndex].throwsRound + incomingThrows;
           activePlayer.holes[roundIndex].throwsRound += incomingThrows;
 
           activePlayer.holes[roundIndex].overUnder = (incomingThrows - activePlayer.holes[roundIndex].par);
@@ -188,7 +177,7 @@
           players[activePlayerIndex] = JSON.parse(JSON.stringify(activePlayer));
 
           // bump to next player to become activePlayer if multiple players
-          if (activePlayerIndex < players.length - 1) { // not the last player in the players list
+          if (activePlayerIndex < players.length - 1) { // is not the last player in the players list
             activePlayerIndex++;
             activePlayer = players[activePlayerIndex];
             
@@ -198,7 +187,6 @@
             });
           } else { // is the last player in the list, or is single player, on last hole
             activePlayerIndex = 0;
-            // roundIndex++;
 
             // update UI confirm area player
             activePlayerName.forEach(function(name) {
@@ -222,7 +210,7 @@
         }; // end if-else for all holes, working and last
         // start all over again
         throwsBox.innerHTML = "";
-      }; // end scores
+      }; // end scores function
 
       // and by submit we mean update both the DOM display and the js objects
       submitButton.addEventListener('click', event => {
@@ -237,9 +225,11 @@
 
     seedFinishedModal(course, players, roundIndex) {
       let insertRoundDataHere = document.querySelector('[rh-rounddata]');
-      let roundDataOutput = `
-      <h5 class="round-scoring-modal-round-header">${course.name}</h5>
-      <p class="round-scoring-modal-round-date">${course.roundDate}</p>`;
+      let roundDataOutput = "";
+
+      roundDataOutput = `
+        <h5 class="round-scoring-modal-round-header">${course.name}</h5>
+        <p class="round-scoring-modal-round-date">${course.roundDate}</p>`;
 
       players.forEach(function(player) {
         player.finalScore = player.holes[roundIndex].overUnderRound;
@@ -248,23 +238,20 @@
         roundDataOutput += `
         <div class="round-scoring-modal-player">
         <p class="round-scoring-modal-player-name">${player.nameFirst}</p>
-        <p class="round-scoring-modal-player-score">${player.holes[roundIndex].overUnderRound}</p>
-        <p class="round-scoring-modal-player-throws">From ${player.holes[roundIndex].throwsRound} Throws</p>
+        <p class="round-scoring-modal-player-score">${player.finalScore}</p>
+        <p class="round-scoring-modal-player-throws">From ${player.finalThrows} Throws</p>
         </div>
         `;
       });
       insertRoundDataHere.innerHTML = roundDataOutput;
       roundscoring.manageFinishedModal(course, players, roundIndex);
-    },
+    }, // end seedFinishedModal
 
     manageFinishedModal(course, players, roundIndex) {
-      let closeButton;
-      let saveButton;
-      let savedRound;
-      let savedRoundsArray;
-
-      closeButton = document.querySelector('.round-scoring-modal-footer-close-icon');
-      saveButton = document.querySelector('.round-scoring-modal-footer-save-icon');
+      let closeButton = document.querySelector('.round-scoring-modal-footer-close-icon');
+      let saveButton = document.querySelector('.round-scoring-modal-footer-save-icon');
+      let savedRound = {};
+      let savedRoundsArray = [];
 
       savedRound = {
         players: players,
@@ -274,13 +261,8 @@
         roundDate: new Date().toLocaleDateString('en-US')
       };
 
-      savedRoundsArray = [];
-
       // footer actions
-      closeButton.addEventListener('click', event => {
-        document.querySelector('.round-scoring-modal').classList.remove('round-scoring-modal-open');
-      });
-      saveButton.addEventListener('click', event => {
+      function saveButtonListener(event) {
 
         async function getSavedRounds() {
           const rounds = await localforage.getItem('savedRounds');
@@ -297,8 +279,14 @@
           }
         }); // end .then
         document.querySelector('.round-scoring-modal').classList.remove('round-scoring-modal-open');
-      }); // end save button
-    },
+      };// end save button listener
+
+      closeButton.addEventListener('click', event => {
+        document.querySelector('.round-scoring-modal').classList.remove('round-scoring-modal-open');
+      });
+
+      saveButton.addEventListener('click', saveButtonListener); 
+    }, // end manageFinishedModal
 
     storeage(incomingSavedRoundData) {
       localforage.setItem('savedRounds', incomingSavedRoundData);
@@ -310,7 +298,7 @@
       // off to home page
       setTimeout(() => {
         window.location.href = '/';
-      }, 1000);
+      }, 300);
     }
 
   };
