@@ -2,8 +2,14 @@
   "name": "discKeeper",
   "short_name": "discKeeper",
   "id": "/index.html",
+  "start_url": "./index.html",
+  "scope": "/",
   "description": "Simple Disc Golf Score Keeping",
+  "display": "standalone",
   "orientation": "portrait",
+  "categories": ["sports", "lifestyle", "events"],
+  "background_color": "#BEC2D5",
+  "theme_color": "#666D93",
   "icons": [
     {
       "src": "./img/dk-icns/safari-pinned-tab.svg",
@@ -50,9 +56,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#BEC2D5",
-  "theme_color": "#666D93"
+  ]
 }
